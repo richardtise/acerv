@@ -38,9 +38,10 @@ describe('task categories and modalities', () => {
 
   test('modalities match the on-chain registry exactly', () => {
     expect(ALL_MODALITIES.sort()).toEqual(
-      ['robotics', 'llm', 'vision', 'audio', 'writing', 'safety', 'medical'].sort()
+      ['robotics', 'llm', 'vision', 'audio', 'writing', 'safety', 'medical', 'driving'].sort()
     );
     expect(MODALITIES.ROBOTICS).toBe('robotics');
+    expect(MODALITIES.DRIVING).toBe('driving');
   });
 
   test('anti-gaming category lists are subsets of the known categories', () => {

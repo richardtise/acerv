@@ -9,7 +9,7 @@ import "../src/mocks/MockUSDG.sol";
 /// @notice Deploys TaskVaultPoints + TaskVault and wires up the minter/burner roles.
 /// @dev Env:
 ///        PRIVATE_KEY       (required) deployer key
-///        TREASURY_ADDRESS  (required) receives forfeited stream funds
+///        TREASURY_ADDRESS  (required) protocol treasury address (no longer receives stream funds)
 ///        USDG_ADDRESS      (optional) leave unset/zero to deploy MockUSDG — handy
 ///                          on a fresh testnet where no USDG exists yet.
 contract Deploy is Script {

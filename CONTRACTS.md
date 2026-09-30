@@ -5,7 +5,6 @@
 Two main contracts:
 1. **TaskVaultPoints** — Soulbound ERC20 point token
 2. **TaskVault** — Core logic for registration, tasks, tiers, badges, referrals, vault, streaming
-
 ## TaskVaultPoints.sol
 
 ### Purpose
@@ -45,7 +44,7 @@ Non-transferable point token. Only the TaskVault contract can mint/burn. Can be 
 | Gold | 250 | 95% | #ffd700 |
 | Platinum | 500 | 98% | #e5e4e2 |
 
-**Default Modalities**: Robotics, LLM Evaluation, Computer Vision, Audio Processing, Writing & Research, Safety & Redteam, Medical Imaging.
+**Default Modalities**: Robotics, LLM Evaluation, Computer Vision, Audio Processing, Writing & Research, Safety & Redteam, Medical Imaging, Driving & Street Scenes.
 
 **Admin can add new modalities** via `registerModality(bytes32 hash, string name)`.
 
@@ -107,6 +106,10 @@ function createStream(uint256 amount, uint256 durationSeconds) external
 function claimStream(uint256 streamIndex) external
 function cancelStream(uint256 streamIndex) external
 ```
+Streams are self-funded vesting schedules with **no yield**: cancelling returns
+the full remaining balance (vested + unvested) to the user. The `forfeited`
+field of `StreamCancelled` is always 0 and is kept only for event-shape
+compatibility — the treasury receives nothing on cancel.
 
 #### Admin — DEFAULT_ADMIN_ROLE
 ```solidity

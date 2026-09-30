@@ -28,9 +28,20 @@ const CATEGORIES = {
   VISION_LABEL: 'vision-label',
   WRITING_EVAL: 'writing-eval',
   AUDIO_TRANSCRIBE: 'audio-transcribe',
+  MEDICAL_IMAGE: 'medical-image',
+  RLHF_RATIONALE: 'rlhf-rationale',
+  BBOX_GROUND: 'bbox-ground',
+  AUDIO_DIARIZE: 'audio-diarize',
+  // Driving annotation (annotation-first; raw GPS/traces are never the deliverable).
+  HAZARD_EVENT: 'hazard-event',
+  BEHAVIOR_NARRATE: 'behavior-narrate',
+  SCENE_ATTRIBUTE: 'scene-attribute',
 };
 
-/** Short modality names — must match the on-chain registry exactly. */
+/** Short modality names — must match the on-chain registry exactly.
+ * A NEW modality requires: constructor entry (or registerModality), backend
+ * MODALITIES + CATEGORY_TO_MODALITY entries, blockchain.js MODALITY_NAMES,
+ * frontend THEMES + TASK_GENRES + GENRE_VISUALS entries. */
 const MODALITIES = {
   ROBOTICS: 'robotics',
   LLM: 'llm',
@@ -39,6 +50,7 @@ const MODALITIES = {
   WRITING: 'writing',
   SAFETY: 'safety',
   MEDICAL: 'medical',
+  DRIVING: 'driving',
 };
 
 const ALL_CATEGORIES = Object.values(CATEGORIES);
@@ -54,6 +66,13 @@ const CATEGORY_TO_MODALITY = {
   [CATEGORIES.VISION_LABEL]: MODALITIES.VISION,
   [CATEGORIES.WRITING_EVAL]: MODALITIES.WRITING,
   [CATEGORIES.AUDIO_TRANSCRIBE]: MODALITIES.AUDIO,
+  [CATEGORIES.MEDICAL_IMAGE]: MODALITIES.MEDICAL,
+  [CATEGORIES.RLHF_RATIONALE]: MODALITIES.LLM,
+  [CATEGORIES.BBOX_GROUND]: MODALITIES.VISION,
+  [CATEGORIES.AUDIO_DIARIZE]: MODALITIES.AUDIO,
+  [CATEGORIES.HAZARD_EVENT]: MODALITIES.DRIVING,
+  [CATEGORIES.BEHAVIOR_NARRATE]: MODALITIES.DRIVING,
+  [CATEGORIES.SCENE_ATTRIBUTE]: MODALITIES.DRIVING,
 };
 
 // Categories where pasting answers is not allowed (free-text work).
@@ -61,6 +80,9 @@ const NO_PASTE_CATEGORIES = [
   CATEGORIES.WRITING_EVAL,
   CATEGORIES.SAFETY_REDTEAM,
   CATEGORIES.AUDIO_TRANSCRIBE,
+  CATEGORIES.RLHF_RATIONALE,
+  CATEGORIES.AUDIO_DIARIZE,
+  CATEGORIES.BEHAVIOR_NARRATE,
 ];
 
 // Categories that produce free text (AI/repetition analysis applies).
@@ -68,6 +90,8 @@ const TEXT_ANALYSIS_CATEGORIES = [
   CATEGORIES.WRITING_EVAL,
   CATEGORIES.SAFETY_REDTEAM,
   CATEGORIES.AUDIO_TRANSCRIBE,
+  CATEGORIES.RLHF_RATIONALE,
+  CATEGORIES.BEHAVIOR_NARRATE,
 ];
 
 const isValidCategory = (value) => ALL_CATEGORIES.includes(value);

@@ -30,14 +30,16 @@ const GENRE_VISUALS = {
   audio: { icon: '🎧', color: '#4ade80' },
   writing: { icon: '✍️', color: '#1c1917' },
   safety: { icon: '🛡️', color: '#ef4444' },
+  medical: { icon: '🩻', color: '#38bdf8' },
+  driving: { icon: '🛺', color: '#facc15' },
   default: { icon: '📋', color: 'var(--tv-accent)' },
 }
 
 const STREAM_PERIODS = [
-  { label: '3 Months', months: 3, apr: '8%', multiplier: '1.1x' },
-  { label: '6 Months', months: 6, apr: '12%', multiplier: '1.25x' },
-  { label: '9 Months', months: 9, apr: '16%', multiplier: '1.5x' },
-  { label: '12 Months', months: 12, apr: '24%', multiplier: '2.0x' },
+  { label: '30 Days', months: 1, lockNote: 'Short lock' },
+  { label: '3 Months', months: 3, lockNote: 'Standard lock' },
+  { label: '6 Months', months: 6, lockNote: 'Longer commitment' },
+  { label: '12 Months', months: 12, lockNote: 'Max commitment' },
 ]
 
 function SkeletonCard() {
@@ -492,7 +494,7 @@ export default function TaskVaultDashboard() {
           <div>
             <div className="section-header">
               <h2>Vault</h2>
-              <p>Deposit USDG to earn bonuses. Optional — not required to complete tasks.</p>
+              <p>Optional commitment device: deposit USDG for point bonuses. Withdraw anytime — no yield, no lockups on deposits.</p>
             </div>
 
             <div className="stats-bar" style={{ marginBottom: 24 }}>
@@ -599,8 +601,12 @@ export default function TaskVaultDashboard() {
             </div>
 
             <div className="info-card">
-              <h3>Create Stream</h3>
-              <p>Stream your vault capital out over time with continuous vesting.</p>
+              <h3>Scheduled release</h3>
+              <p>
+                Lock vault funds and release them back to yourself over time.
+                No yield — this is a self-funded vesting schedule, and you can
+                cancel anytime to reclaim the full unvested balance.
+              </p>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 12, margin: '16px 0' }}>
                 {STREAM_PERIODS.map((period, idx) => (
@@ -619,11 +625,8 @@ export default function TaskVaultDashboard() {
                     <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--tv-text)', marginBottom: 4 }}>
                       {period.label}
                     </div>
-                    <div style={{ fontSize: 12, color: 'var(--tv-accent)', fontWeight: 700, fontFamily: 'var(--tv-font-mono)' }}>
-                      {period.apr} APR
-                    </div>
                     <div style={{ fontSize: 11, color: 'var(--tv-text-muted)', marginTop: 4 }}>
-                      {period.multiplier} pts
+                      {period.lockNote} · 0% yield
                     </div>
                   </div>
                 ))}

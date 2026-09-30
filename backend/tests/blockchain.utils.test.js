@@ -50,6 +50,7 @@ describe('modality encoding', () => {
       'writing',
       'safety',
       'medical',
+      'driving',
     ]);
     for (const name of MODALITY_NAMES) {
       expect(modalityHash(name)).toBe(ethers.id(name));

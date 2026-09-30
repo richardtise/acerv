@@ -154,6 +154,7 @@ contract TaskVault is AccessControl, ReentrancyGuard {
         _registerModality(keccak256("writing"), "Writing & Research");
         _registerModality(keccak256("safety"), "Safety & Redteam");
         _registerModality(keccak256("medical"), "Medical Imaging");
+        _registerModality(keccak256("driving"), "Driving & Street Scenes");
     }
 
     // --- Modality Management ---
@@ -472,24 +473,21 @@ contract TaskVault is AccessControl, ReentrancyGuard {
     function cancelStream(uint256 streamIndex) external nonReentrant {
         Stream storage stream = userStreams[msg.sender][streamIndex];
         require(!stream.cancelled, "Already cancelled");
+        require(stream.claimedAmount < stream.totalAmount, "Already fully claimed");
 
-        uint256 vested = _vestedAmount(stream);
-        uint256 claimable = vested - stream.claimedAmount;
-        uint256 forfeited = stream.totalAmount - vested;
+        // Cancel returns the ENTIRE remaining balance (vested + unvested) to
+        // the user. There is no yield and no penalty: a stream is a
+        // self-funded vesting schedule, so forfeiting to treasury would be
+        // taking the user's own principal.
+        uint256 refund = stream.totalAmount - stream.claimedAmount;
 
         stream.cancelled = true;
+        stream.claimedAmount = stream.totalAmount;
         users[msg.sender].activeStreams--;
 
-        if (claimable > 0) {
-            stream.claimedAmount += claimable;
-            usdg.safeTransfer(msg.sender, claimable);
-        }
+        usdg.safeTransfer(msg.sender, refund);
 
-        if (forfeited > 0) {
-            usdg.safeTransfer(treasury, forfeited);
-        }
-
-        emit StreamCancelled(msg.sender, streamIndex, forfeited);
+        emit StreamCancelled(msg.sender, streamIndex, 0);
     }
 
     function _vestedAmount(Stream memory stream) internal view returns (uint256) {

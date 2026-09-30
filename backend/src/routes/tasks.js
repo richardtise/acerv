@@ -120,6 +120,13 @@ router.post('/:taskId/submit', authMiddleware, async (req, res) => {
       return res.status(400).json({ error: 'answer is required' });
     }
 
+    // Shape validation per answer type so empty/partial work is rejected at the
+    // API boundary even if a client bypasses the UI gating.
+    const answerProblem = validateAnswerShape(task.category, answer);
+    if (answerProblem) {
+      return res.status(400).json({ error: answerProblem });
+    }
+
     const task = await Task.findOne({ taskId });
     if (!task) {
       return res.status(404).json({ error: 'Task not found' });
@@ -209,9 +216,119 @@ router.post('/:taskId/submit', authMiddleware, async (req, res) => {
   }
 });
 
+// Per-type answer-shape validation. Returns an error string or null.
+function validateAnswerShape(category, answer) {
+  if (typeof answer !== 'object' || answer === null) {
+    return 'answer must be an object';
+  }
+  const nonEmpty = (v) => typeof v === 'string' && v.trim().length > 0;
+  const in01 = (v) => typeof v === 'number' && Number.isFinite(v) && v >= 0 && v <= 1;
+
+  switch (answer.type) {
+    case 'llm-rank':
+      if (!['A', 'B'].includes(answer.choice)) return 'choice must be A or B';
+      return null;
+    case 'llm-rationale':
+      if (!['A', 'B'].includes(answer.choice)) return 'choice must be A or B';
+      if (!nonEmpty(answer.rationale) || answer.rationale.trim().length < 20) {
+        return 'rationale must be at least 20 characters';
+      }
+      if (!Number.isInteger(answer.confidence) || answer.confidence < 1 || answer.confidence > 5) {
+        return 'confidence must be an integer 1-5';
+      }
+      return null;
+    case 'bbox': {
+      if (!Array.isArray(answer.boxes) || answer.boxes.length === 0) {
+        return 'at least one bounding box is required';
+      }
+      for (const b of answer.boxes) {
+        if (!b || !nonEmpty(b.label)) return 'each box needs a label';
+        if (!in01(b.x_min) || !in01(b.y_min) || !in01(b.x_max) || !in01(b.y_max)) {
+          return 'box coordinates must be normalised 0-1';
+        }
+        if (!(b.x_max > b.x_min && b.y_max > b.y_min)) return 'box must have positive area';
+      }
+      return null;
+    }
+    case 'diarize': {
+      if (!Array.isArray(answer.segments) || answer.segments.length === 0) {
+        return 'at least one speaker segment is required';
+      }
+      let prevEnd = -Infinity;
+      for (const s of answer.segments) {
+        if (!s || !nonEmpty(s.speaker)) return 'each segment needs a speaker';
+        if (typeof s.start !== 'number' || typeof s.end !== 'number' ||
+            !Number.isFinite(s.start) || !Number.isFinite(s.end) ||
+            s.start < 0 || !(s.end > s.start)) {
+          return 'segments need valid start/end seconds with end > start';
+        }
+        if (s.start < prevEnd) return 'segments must not overlap and should be in order';
+        prevEnd = s.end;
+      }
+      return null;
+    }
+    case 'vision':
+      if (!Array.isArray(answer.labels) || answer.labels.length === 0) {
+        return 'at least one label is required';
+      }
+      return null;
+    case 'writing':
+    case 'audio':
+    case 'generic':
+      if (!nonEmpty(answer.text)) return 'text must not be empty';
+      return null;
+    case 'robotics':
+      if (!Array.isArray(answer.phases) || answer.phases.length === 0) {
+        return 'at least one phase mark is required';
+      }
+      return null;
+    case 'safety':
+      if (!nonEmpty(answer.level)) return 'risk level is required';
+      return null;
+    case 'medical':
+      if (!Array.isArray(answer.findings) || answer.findings.length === 0) {
+        return 'at least one finding is required';
+      }
+      if (!nonEmpty(answer.triage)) return 'triage priority is required';
+      return null;
+    case 'hazard': {
+      if (!Array.isArray(answer.events) || answer.events.length === 0) {
+        return 'at least one hazard event is required';
+      }
+      for (const e of answer.events) {
+        if (!e || !nonEmpty(e.type)) return 'each event needs a type';
+        if (typeof e.t !== 'number' || !Number.isFinite(e.t) || e.t < 0) {
+          return 'each event needs a valid timestamp in seconds';
+        }
+        if (e.note !== undefined && typeof e.note !== 'string') return 'event note must be text';
+      }
+      return null;
+    }
+    case 'behavior':
+      if (!Array.isArray(answer.maneuvers) || answer.maneuvers.length === 0) {
+        return 'at least one maneuver tag is required';
+      }
+      if (!nonEmpty(answer.narration) || answer.narration.trim().length < 30) {
+        return 'narration must be at least 30 characters';
+      }
+      return null;
+    case 'scene': {
+      if (typeof answer.attributes !== 'object' || answer.attributes === null) {
+        return 'scene attributes are required';
+      }
+      for (const k of ['roadSurface', 'markingQuality', 'trafficDensity', 'lighting']) {
+        if (!nonEmpty(answer.attributes[k])) return `scene attribute "${k}" is required`;
+      }
+      return null;
+    }
+    default:
+      // Unknown/legacy shapes: accept (category-specific checks still apply below).
+      return null;
+  }
+}
+
 // GET /api/tasks/:taskId/submissions/my — Get my submission
-router.get('/:taskId/submissions/my', authMiddleware, async (req, res) => {
-  try {
+router.get('/:taskId/submissions/my', authMiddleware, async (req, res) => {  try {
     const submission = await Submission.findOne({
       taskId: req.params.taskId,
       userAddress: req.user.walletAddress,

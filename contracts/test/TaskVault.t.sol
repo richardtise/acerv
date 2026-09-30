@@ -319,7 +319,7 @@ contract TaskVaultTest is Test {
 
     function test_GetRegisteredModalities() public {
         bytes32[] memory mods = vault.getRegisteredModalities();
-        assertEq(mods.length, 7);
+        assertEq(mods.length, 8);
     }
 
     function test_RegisterNewModality() public {
@@ -486,7 +486,7 @@ contract TaskVaultTest is Test {
         vault.claimStream(0);
     }
 
-    function test_CancelStreamForfeitsUnvestedToTreasury() public {
+    function test_CancelStreamRefundsFullBalanceToUser() public {
         vm.prank(user);
         vault.register(address(0));
 
@@ -504,8 +504,10 @@ contract TaskVaultTest is Test {
         vm.prank(user);
         vault.cancelStream(0);
 
-        assertApproxEqRel(usdg.balanceOf(treasury) - treasuryBefore, 250e6, 0.01e18);
-        assertApproxEqRel(usdg.balanceOf(user) - userBefore, 250e6, 0.01e18);
+        // Full remaining balance (vested + unvested) returns to the user;
+        // treasury takes nothing — there is no yield and no penalty.
+        assertApproxEqRel(usdg.balanceOf(user) - userBefore, 500e6, 0.01e18);
+        assertEq(usdg.balanceOf(treasury), treasuryBefore);
         assertEq(info(user).activeStreams, 0);
 
         vm.prank(user);

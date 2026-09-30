@@ -170,10 +170,68 @@ export const THEMES = {
       )
     `,
     bgSize: 'auto',
+  },
+  medical: {
+    name: 'medical',
+    bg: '#060b12',
+    bgPanel: '#0b1420',
+    bgElevated: '#111f30',
+    text: '#e6f0f6',
+    textMuted: '#6f8aa0',
+    textDim: '#46586a',
+    border: '#16283a',
+    borderBright: '#21374e',
+    accent: '#38bdf8',
+    accentSecondary: '#2dd4bf',
+    danger: '#ef4444',
+    warning: '#f59e0b',
+    font: "'Inter', sans-serif",
+    fontMono: "'JetBrains Mono', monospace",
+    radius: '10px',
+    shadow: '0 4px 24px rgba(56,189,248,0.10)',
+    bgImage: `
+      radial-gradient(circle at 80% 10%, rgba(56,189,248,0.06) 0%, transparent 50%),
+      linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px)
+    `,
+    bgSize: '100% 100%, 48px 48px, 48px 48px',
+  },
+  driving: {
+    name: 'driving',
+    bg: '#0b0e05',
+    bgPanel: '#131a0b',
+    bgElevated: '#1c2611',
+    text: '#eef3df',
+    textMuted: '#8a9570',
+    textDim: '#5a6346',
+    border: '#232d16',
+    borderBright: '#33411f',
+    accent: '#facc15',
+    accentSecondary: '#fb923c',
+    danger: '#ef4444',
+    warning: '#fb923c',
+    font: "'Inter', sans-serif",
+    fontMono: "'JetBrains Mono', monospace",
+    radius: '6px',
+    shadow: '0 4px 24px rgba(250,204,21,0.10)',
+    bgImage: `
+      radial-gradient(circle at 15% 85%, rgba(250,204,21,0.06) 0%, transparent 50%),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 22px,
+        rgba(250,204,21,0.05) 22px,
+        rgba(250,204,21,0.05) 26px
+      )
+    `,
+    bgSize: '100% 100%, 100% 120px',
   }
 };
 
 // Maps a backend task `category` (or legacy category id) to a visual theme.
+// NOTE: the canonical source is backend/src/constants/taskCategories.js — every
+// CATEGORIES value there must have an entry here, or resolveGenre silently
+// falls through to 'default' for real tasks.
 export const TASK_GENRES = {
   // Backend categories (Task.category in the API)
   llm: 'llm',
@@ -182,7 +240,8 @@ export const TASK_GENRES = {
   audio: 'audio',
   writing: 'writing',
   safety: 'safety',
-  medical: 'default',
+  medical: 'medical',
+  driving: 'driving',
   // Legacy category ids
   'llm-rank': 'llm',
   'robot-phase': 'robotics',
@@ -192,6 +251,13 @@ export const TASK_GENRES = {
   'vision-label': 'vision',
   'writing-eval': 'writing',
   'audio-transcribe': 'audio',
+  'medical-image': 'medical',
+  'rlhf-rationale': 'llm',
+  'bbox-ground': 'vision',
+  'audio-diarize': 'audio',
+  'hazard-event': 'driving',
+  'behavior-narrate': 'driving',
+  'scene-attribute': 'driving',
 };
 
 /**

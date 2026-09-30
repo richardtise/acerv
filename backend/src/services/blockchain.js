@@ -17,7 +17,8 @@ const VAULT_ABI = [
 
 // Modality names registered in the TaskVault constructor. The contract stores
 // keccak256(name) — NOT a right-padded bytes32 — so we must use ethers.id().
-const MODALITY_NAMES = ['robotics', 'llm', 'vision', 'audio', 'writing', 'safety', 'medical'];
+// MUST match backend/src/constants/taskCategories.js MODALITIES.
+const MODALITY_NAMES = ['robotics', 'llm', 'vision', 'audio', 'writing', 'safety', 'medical', 'driving'];
 
 /** keccak256 of the lower-cased modality name, matching the contract's registry. */
 const modalityHash = (name) => ethers.id(String(name).trim().toLowerCase());
