@@ -23,7 +23,7 @@ class VerifierBot {
   async start() {
     if (!blockchain.isConfigured()) {
       logger.error(
-        'Verifier bot cannot start: RPC_URL, VAULT_ADDRESS and PRIVATE_KEY must all be set.'
+        'Verifier bot cannot start: RPC_URL, ACERV_ADDRESS and PRIVATE_KEY must all be set.'
       );
       process.exit(1);
     }

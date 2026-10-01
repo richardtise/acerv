@@ -2,13 +2,13 @@
 pragma solidity ^0.8.20;
 
 import "forge-std/Test.sol";
-import "../src/TaskVault.sol";
-import "../src/TaskVaultPoints.sol";
+import "../src/AcervVault.sol";
+import "../src/AcervPoints.sol";
 import "../src/mocks/MockUSDG.sol";
 
-contract TaskVaultTest is Test {
-    TaskVaultPoints public points;
-    TaskVault public vault;
+contract AcervVaultTest is Test {
+    AcervPoints public points;
+    AcervVault public vault;
     MockUSDG public usdg;
 
     address public admin = address(1);
@@ -64,8 +64,8 @@ contract TaskVaultTest is Test {
         vm.startPrank(admin);
 
         usdg = new MockUSDG();
-        points = new TaskVaultPoints(admin);
-        vault = new TaskVault(address(points), address(usdg), treasury, admin);
+        points = new AcervPoints(admin);
+        vault = new AcervVault(address(points), address(usdg), treasury, admin);
 
         points.grantRole(points.MINTER_ROLE(), address(vault));
         points.grantRole(points.BURNER_ROLE(), address(vault));
@@ -201,7 +201,7 @@ contract TaskVaultTest is Test {
         vm.prank(verifier);
         vault.completeTaskWithModality(user, keccak256("task1"), 100e18, true, ROBOTICS);
 
-        TaskVault.Badge memory badge = vault.getBadge(user, ROBOTICS);
+        AcervVault.Badge memory badge = vault.getBadge(user, ROBOTICS);
         assertEq(uint256(badge.level), 0); // Not enough tasks for Bronze yet
         assertEq(badge.tasksCompleted, 1);
         assertEq(badge.tasksCorrect, 1);
@@ -227,7 +227,7 @@ contract TaskVaultTest is Test {
         vm.prank(verifier);
         vault.completeTaskWithModality(user, keccak256("c1"), 10e18, true, ROBOTICS);
 
-        TaskVault.Badge memory badge = vault.getBadge(user, ROBOTICS);
+        AcervVault.Badge memory badge = vault.getBadge(user, ROBOTICS);
         assertEq(badge.tasksCompleted, 2);
         assertEq(badge.tasksCorrect, 1);
     }
@@ -241,7 +241,7 @@ contract TaskVaultTest is Test {
             vault.completeTaskWithModality(user, keccak256(abi.encode(i)), 10e18, true, ROBOTICS);
         }
 
-        TaskVault.Badge memory badge = vault.getBadge(user, ROBOTICS);
+        AcervVault.Badge memory badge = vault.getBadge(user, ROBOTICS);
         assertEq(uint256(badge.level), 1); // Bronze
         assertEq(badge.tasksCompleted, 20);
         assertEq(badge.tasksCorrect, 20);
@@ -256,7 +256,7 @@ contract TaskVaultTest is Test {
             vault.completeTaskWithModality(user, keccak256(abi.encode(i)), 10e18, true, ROBOTICS);
         }
 
-        TaskVault.Badge memory badge = vault.getBadge(user, ROBOTICS);
+        AcervVault.Badge memory badge = vault.getBadge(user, ROBOTICS);
         assertEq(uint256(badge.level), 2); // Silver
     }
 
@@ -270,7 +270,7 @@ contract TaskVaultTest is Test {
             vault.completeTaskWithModality(user, keccak256(abi.encode(i)), 10e18, i % 2 == 0, ROBOTICS);
         }
 
-        TaskVault.Badge memory badge = vault.getBadge(user, ROBOTICS);
+        AcervVault.Badge memory badge = vault.getBadge(user, ROBOTICS);
         assertEq(uint256(badge.level), 0);
     }
 
@@ -283,7 +283,7 @@ contract TaskVaultTest is Test {
             vault.completeTaskWithModality(user, keccak256(abi.encode(i)), 10e18, true, ROBOTICS);
         }
 
-        (bytes32[] memory modalities, TaskVault.Badge[] memory badges) = vault.getAllBadges(user);
+        (bytes32[] memory modalities, AcervVault.Badge[] memory badges) = vault.getAllBadges(user);
         assertGt(modalities.length, 0);
 
         bool found = false;
@@ -300,19 +300,19 @@ contract TaskVaultTest is Test {
         vm.prank(user);
         vault.register(address(0));
 
-        assertTrue(vault.canAccessTask(user, 0, ROBOTICS, TaskVault.BadgeLevel.None));
-        assertFalse(vault.canAccessTask(user, 0, ROBOTICS, TaskVault.BadgeLevel.Bronze));
+        assertTrue(vault.canAccessTask(user, 0, ROBOTICS, AcervVault.BadgeLevel.None));
+        assertFalse(vault.canAccessTask(user, 0, ROBOTICS, AcervVault.BadgeLevel.Bronze));
 
         for (uint i = 0; i < 20; i++) {
             vm.prank(verifier);
             vault.completeTaskWithModality(user, keccak256(abi.encode(i)), 10e18, true, ROBOTICS);
         }
 
-        assertTrue(vault.canAccessTask(user, 0, ROBOTICS, TaskVault.BadgeLevel.Bronze));
+        assertTrue(vault.canAccessTask(user, 0, ROBOTICS, AcervVault.BadgeLevel.Bronze));
     }
 
     function test_CanAccessTaskRejectsUnregistered() public {
-        assertFalse(vault.canAccessTask(user, 0, bytes32(0), TaskVault.BadgeLevel.None));
+        assertFalse(vault.canAccessTask(user, 0, bytes32(0), AcervVault.BadgeLevel.None));
     }
 
     // --- Modality registry ---

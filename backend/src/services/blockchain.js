@@ -15,7 +15,7 @@ const VAULT_ABI = [
   'event TaskCompleted(address indexed user, bytes32 indexed taskId, uint256 points, bool correct)',
 ];
 
-// Modality names registered in the TaskVault constructor. The contract stores
+// Modality names registered in the AcervVault constructor. The contract stores
 // keccak256(name) — NOT a right-padded bytes32 — so we must use ethers.id().
 // MUST match backend/src/constants/taskCategories.js MODALITIES.
 const MODALITY_NAMES = ['robotics', 'llm', 'vision', 'audio', 'writing', 'safety', 'medical', 'driving'];
@@ -54,10 +54,10 @@ class BlockchainService {
 
     const rpcUrl = requireEnv('RPC_URL');
     const privateKey = requireEnv('PRIVATE_KEY');
-    const vaultAddress = requireEnv('VAULT_ADDRESS');
+    const vaultAddress = requireEnv('ACERV_ADDRESS');
 
     if (!ethers.isAddress(vaultAddress)) {
-      throw new Error(`VAULT_ADDRESS is not a valid address: ${vaultAddress}`);
+      throw new Error(`ACERV_ADDRESS is not a valid address: ${vaultAddress}`);
     }
 
     this._provider = new ethers.JsonRpcProvider(rpcUrl);

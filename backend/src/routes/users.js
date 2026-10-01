@@ -17,7 +17,7 @@ const NONCE_TTL_MS = 10 * 60 * 1000; // 10 minutes
 
 const buildLoginMessage = (walletAddress, nonce, expiresAt) =>
   [
-    'TaskVault Login',
+    'Acerv Login',
     `Wallet: ${walletAddress.toLowerCase()}`,
     `Nonce: ${nonce}`,
     `Issued At: ${new Date().toISOString()}`,

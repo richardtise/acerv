@@ -3,7 +3,7 @@ import { useAccount } from 'wagmi'
 import { ThemeProvider } from './components/ThemeProvider'
 import BackgroundEffect from './components/BackgroundEffect'
 import Landing from './Landing'
-import TaskVaultDashboard from './TaskVaultDashboard'
+import AcervDashboard from './AcervDashboard'
 import './App.css'
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
     <ThemeProvider>
       <div className="app-root">
         <BackgroundEffect />
-        {isConnected ? <TaskVaultDashboard /> : <Landing />}
+        {isConnected ? <AcervDashboard /> : <Landing />}
       </div>
     </ThemeProvider>
   )

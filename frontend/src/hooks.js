@@ -2,12 +2,12 @@ import { useState, useRef, useCallback, useEffect } from 'react'
 import { useReadContract, useWriteContract, useAccount, useSignMessage } from 'wagmi'
 import { readContract, waitForTransactionReceipt } from 'wagmi/actions'
 import { parseUnits, formatUnits, keccak256, toHex } from 'viem'
-import { TASK_VAULT_ABI, ERC20_ABI } from './abi'
+import { ACERV_ABI, ERC20_ABI } from './abi'
 import { config } from './wagmi-config'
-import { VAULT_ADDRESS, USDG_ADDRESS } from './config'
+import { ACERV_ADDRESS, USDG_ADDRESS } from './config'
 
 const USDG_DECIMALS = 6
-export const AUTH_TOKEN_KEY = 'taskvault_token'
+export const AUTH_TOKEN_KEY = 'acerv_token'
 
 function readStoredToken() {
   try {
@@ -23,69 +23,69 @@ function readStoredToken() {
 
 export function useUserInfo(address) {
   return useReadContract({
-    address: VAULT_ADDRESS,
-    abi: TASK_VAULT_ABI,
+    address: ACERV_ADDRESS,
+    abi: ACERV_ABI,
     functionName: 'getUserInfo',
     args: [address],
-    query: { enabled: !!address && !!VAULT_ADDRESS },
+    query: { enabled: !!address && !!ACERV_ADDRESS },
   })
 }
 
 export function useBadge(address, modality) {
   return useReadContract({
-    address: VAULT_ADDRESS,
-    abi: TASK_VAULT_ABI,
+    address: ACERV_ADDRESS,
+    abi: ACERV_ABI,
     functionName: 'getBadge',
     args: [address, modality],
-    query: { enabled: !!address && !!modality && !!VAULT_ADDRESS },
+    query: { enabled: !!address && !!modality && !!ACERV_ADDRESS },
   })
 }
 
 export function useAllBadges(address) {
   return useReadContract({
-    address: VAULT_ADDRESS,
-    abi: TASK_VAULT_ABI,
+    address: ACERV_ADDRESS,
+    abi: ACERV_ABI,
     functionName: 'getAllBadges',
     args: [address],
-    query: { enabled: !!address && !!VAULT_ADDRESS },
+    query: { enabled: !!address && !!ACERV_ADDRESS },
   })
 }
 
 export function useRegisteredModalities() {
   return useReadContract({
-    address: VAULT_ADDRESS,
-    abi: TASK_VAULT_ABI,
+    address: ACERV_ADDRESS,
+    abi: ACERV_ABI,
     functionName: 'getRegisteredModalities',
-    query: { enabled: !!VAULT_ADDRESS },
+    query: { enabled: !!ACERV_ADDRESS },
   })
 }
 
 export function useTierInfo(index) {
   return useReadContract({
-    address: VAULT_ADDRESS,
-    abi: TASK_VAULT_ABI,
+    address: ACERV_ADDRESS,
+    abi: ACERV_ABI,
     functionName: 'tiers',
     args: [index],
-    query: { enabled: index !== undefined && index !== null && !!VAULT_ADDRESS },
+    query: { enabled: index !== undefined && index !== null && !!ACERV_ADDRESS },
   })
 }
 
 export function useTierCount() {
   return useReadContract({
-    address: VAULT_ADDRESS,
-    abi: TASK_VAULT_ABI,
+    address: ACERV_ADDRESS,
+    abi: ACERV_ABI,
     functionName: 'getTierCount',
-    query: { enabled: !!VAULT_ADDRESS },
+    query: { enabled: !!ACERV_ADDRESS },
   })
 }
 
 export function useLeaderboard(count = 10) {
   return useReadContract({
-    address: VAULT_ADDRESS,
-    abi: TASK_VAULT_ABI,
+    address: ACERV_ADDRESS,
+    abi: ACERV_ABI,
     functionName: 'getLeaderboard',
     args: [count],
-    query: { enabled: !!VAULT_ADDRESS },
+    query: { enabled: !!ACERV_ADDRESS },
   })
 }
 
@@ -115,8 +115,8 @@ function parseUsdgAmount(amount) {
 }
 
 function assertVaultConfigured() {
-  if (!VAULT_ADDRESS) {
-    throw new Error('Contracts are not configured. Set VITE_VAULT_ADDRESS in frontend/.env.')
+  if (!ACERV_ADDRESS) {
+    throw new Error('Contracts are not configured. Set VITE_ACERV_ADDRESS in frontend/.env.')
   }
 }
 
@@ -131,8 +131,8 @@ async function awaitReceipt(hash, label) {
 export function useRegister() {
   const { writeContract, data: hash, isPending, error, reset } = useWriteContract()
   const register = (referrer = '0x0000000000000000000000000000000000000000') => {
-    if (!VAULT_ADDRESS) return
-    writeContract({ address: VAULT_ADDRESS, abi: TASK_VAULT_ABI, functionName: 'register', args: [referrer] })
+    if (!ACERV_ADDRESS) return
+    writeContract({ address: ACERV_ADDRESS, abi: ACERV_ABI, functionName: 'register', args: [referrer] })
   }
   return { register, hash, isPending, error, reset }
 }
@@ -142,7 +142,7 @@ export function useRegister() {
  *
  * The vault pulls funds with `usdg.transferFrom`, so a bare `depositToVault`
  * always reverts without an ERC20 allowance. This hook reads the live
- * allowance, sends `approve(VAULT_ADDRESS, amount)` and waits for that receipt
+ * allowance, sends `approve(ACERV_ADDRESS, amount)` and waits for that receipt
  * before submitting the deposit. `status` is 'approving' | 'depositing' |
  * 'success' | 'error' | 'idle' so the UI can surface pending states.
  */
@@ -153,8 +153,8 @@ export function useVaultDeposit() {
     address: USDG_ADDRESS,
     abi: ERC20_ABI,
     functionName: 'allowance',
-    args: address && VAULT_ADDRESS ? [address, VAULT_ADDRESS] : undefined,
-    query: { enabled: !!address && !!VAULT_ADDRESS && !!USDG_ADDRESS },
+    args: address && ACERV_ADDRESS ? [address, ACERV_ADDRESS] : undefined,
+    query: { enabled: !!address && !!ACERV_ADDRESS && !!USDG_ADDRESS },
   })
 
   const [hash, setHash] = useState()
@@ -179,7 +179,7 @@ export function useVaultDeposit() {
           address: USDG_ADDRESS,
           abi: ERC20_ABI,
           functionName: 'allowance',
-          args: [address, VAULT_ADDRESS],
+          args: [address, ACERV_ADDRESS],
         })
       } catch {
         // Fall back to the cached allowance if the read fails.
@@ -191,7 +191,7 @@ export function useVaultDeposit() {
           address: USDG_ADDRESS,
           abi: ERC20_ABI,
           functionName: 'approve',
-          args: [VAULT_ADDRESS, parsed],
+          args: [ACERV_ADDRESS, parsed],
         })
         setHash(approveHash)
         await awaitReceipt(approveHash, 'Approval')
@@ -200,8 +200,8 @@ export function useVaultDeposit() {
 
       setStatus('depositing')
       const depositHash = await writeContractAsync({
-        address: VAULT_ADDRESS,
-        abi: TASK_VAULT_ABI,
+        address: ACERV_ADDRESS,
+        abi: ACERV_ABI,
         functionName: 'depositToVault',
         args: [parsed],
       })
@@ -235,8 +235,8 @@ export function useVaultWithdraw() {
       const parsed = parseUsdgAmount(amount)
       setIsPending(true)
       const withdrawHash = await writeContractAsync({
-        address: VAULT_ADDRESS,
-        abi: TASK_VAULT_ABI,
+        address: ACERV_ADDRESS,
+        abi: ACERV_ABI,
         functionName: 'withdrawFromVault',
         args: [parsed],
       })
@@ -269,8 +269,8 @@ export function useCreateStream() {
       if (!Number.isFinite(duration) || duration <= 0) throw new Error('Choose a valid stream duration')
       setIsPending(true)
       const streamHash = await writeContractAsync({
-        address: VAULT_ADDRESS,
-        abi: TASK_VAULT_ABI,
+        address: ACERV_ADDRESS,
+        abi: ACERV_ABI,
         functionName: 'createStream',
         args: [parsed, BigInt(Math.floor(duration))],
       })
@@ -474,8 +474,8 @@ export function captureReferrer() {
   if (typeof window === 'undefined') return null
   const params = new URLSearchParams(window.location.search)
   const ref = params.get('ref')
-  if (ref) { localStorage.setItem('taskvault_referrer', ref); return ref }
-  return localStorage.getItem('taskvault_referrer')
+  if (ref) { localStorage.setItem('acerv_referrer', ref); return ref }
+  return localStorage.getItem('acerv_referrer')
 }
 
 export function formatPoints(value) {
@@ -510,7 +510,7 @@ export function badgeLevelName(level) {
 }
 
 export function badgeLevelColor(level) {
-  return ['var(--tv-text-dim)', '#cd7f32', '#c0c0c0', '#ffd700', '#e5e4e2'][level] || 'var(--tv-text-muted)'
+  return ['var(--acv-text-dim)', '#cd7f32', '#c0c0c0', '#ffd700', '#e5e4e2'][level] || 'var(--acv-text-muted)'
 }
 
 // ---------------------------------------------------------------------------

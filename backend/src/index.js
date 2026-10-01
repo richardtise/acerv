@@ -178,7 +178,7 @@ async function start() {
 
     if (!blockchain.isConfigured()) {
       logger.warn(
-        'Chain configuration incomplete (RPC_URL/VAULT_ADDRESS/PRIVATE_KEY). ' +
+        'Chain configuration incomplete (RPC_URL/ACERV_ADDRESS/PRIVATE_KEY). ' +
           'Read-only endpoints will work; on-chain actions will fail until it is set.'
       );
     }
@@ -186,7 +186,7 @@ async function start() {
     startCronJobs();
 
     app.listen(PORT, () => {
-      logger.info(`TaskVault API running on port ${PORT}`);
+      logger.info(`Acerv API running on port ${PORT}`);
       logger.info(`Environment: ${get('NODE_ENV', 'development')}`);
     });
   } catch (err) {

@@ -25,8 +25,8 @@ export default function BackgroundEffect() {
         inset: 0,
         zIndex: 0,
         pointerEvents: 'none',
-        backgroundImage: 'var(--tv-bg-image)',
-        backgroundSize: 'var(--tv-bg-size)',
+        backgroundImage: 'var(--acv-bg-image)',
+        backgroundSize: 'var(--acv-bg-size)',
         opacity: 0.6,
         transition: 'all 0.8s ease',
       }}

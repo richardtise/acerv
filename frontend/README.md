@@ -1,4 +1,4 @@
-# TaskVault Frontend v3
+# Acerv Frontend v3
 
 ## What's New
 
@@ -65,7 +65,7 @@ npm run build
 
 ## Contract Requirements
 
-Your TaskVault.sol needs these functions:
+Your AcervVault.sol needs these functions:
 
 ```solidity
 function register(address referrer) external;

@@ -5,11 +5,11 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import "./TaskVaultPoints.sol";
+import "./AcervPoints.sol";
 
-/// @title TaskVault
-/// @notice Main contract for TaskVault — free registration, task completion, tiers, badges, referrals, vault, and streaming.
-contract TaskVault is AccessControl, ReentrancyGuard {
+/// @title AcervVault
+/// @notice Main contract for Acerv — free registration, task completion, tiers, badges, referrals, vault, and streaming.
+contract AcervVault is AccessControl, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
     bytes32 public constant VERIFIER_ROLE = keccak256("VERIFIER_ROLE");
@@ -38,7 +38,7 @@ contract TaskVault is AccessControl, ReentrancyGuard {
     struct User {
         bool exists;
         uint8 tierIndex;
-        uint256 balance;           // TVP points
+        uint256 balance;           // ACP points
         uint256 lifetimeEarned;
         uint256 referralEarnings;
         uint256 referralCount;
@@ -62,7 +62,7 @@ contract TaskVault is AccessControl, ReentrancyGuard {
 
     // --- State ---
 
-    TaskVaultPoints public pointsToken;
+    AcervPoints public pointsToken;
     IERC20 public usdg;
     address public treasury;
 
@@ -130,7 +130,7 @@ contract TaskVault is AccessControl, ReentrancyGuard {
         address _treasury,
         address _admin
     ) {
-        pointsToken = TaskVaultPoints(_pointsToken);
+        pointsToken = AcervPoints(_pointsToken);
         usdg = IERC20(_usdg);
         treasury = _treasury;
 

@@ -1,14 +1,14 @@
-# TaskVault Contract Architecture
+# Acerv Contract Architecture
 
 ## Overview
 
 Two main contracts:
-1. **TaskVaultPoints** — Soulbound ERC20 point token
-2. **TaskVault** — Core logic for registration, tasks, tiers, badges, referrals, vault, streaming
-## TaskVaultPoints.sol
+1. **AcervPoints** — Soulbound ERC20 point token
+2. **AcervVault** — Core logic for registration, tasks, tiers, badges, referrals, vault, streaming
+## AcervPoints.sol
 
 ### Purpose
-Non-transferable point token. Only the TaskVault contract can mint/burn. Can be made transferable later via `enableTransfers()`.
+Non-transferable point token. Only the AcervVault contract can mint/burn. Can be made transferable later via `enableTransfers()`.
 
 ### Key Functions
 
@@ -20,9 +20,9 @@ Non-transferable point token. Only the TaskVault contract can mint/burn. Can be 
 | `setTransferWhitelist(address, bool)` | Admin | Allow specific addresses to transfer before global enable |
 
 ### Constants
-- `MAX_SUPPLY = 100,000,000 TVP`
+- `MAX_SUPPLY = 100,000,000 ACP`
 
-## TaskVault.sol
+## AcervVault.sol
 
 ### Tiers (Vertical Progression)
 
@@ -162,8 +162,8 @@ event ModalityRegistered(bytes32 indexed modality, string name);
 | DEFAULT_ADMIN_ROLE | Deployer | Grant/revoke roles, `addVerifier` / `removeVerifier`, `setTreasury`, everything |
 | ADMIN_ROLE | Deployer | Invite architects, set weekly caps / vault & badge thresholds, register modalities |
 | VERIFIER_ROLE | Deployer + bots | Complete tasks, mint points |
-| MINTER_ROLE | TaskVault contract | Mint TVP points |
-| BURNER_ROLE | TaskVault contract | Burn TVP points |
+| MINTER_ROLE | AcervVault contract | Mint ACP points |
+| BURNER_ROLE | AcervVault contract | Burn ACP points |
 
 ## Upgrade Path
 

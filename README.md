@@ -1,4 +1,4 @@
-# TaskVault — Complete Platform
+# Acerv — Complete Platform
 
 Decentralized AI data marketplace. Contributors complete tasks, earn points, level up through tiers and modality badges. Optional vault deposits for bonuses with streaming withdrawals.
 
@@ -26,7 +26,7 @@ Decentralized AI data marketplace. Contributors complete tasks, earn points, lev
 ## What's Included
 
 ```
-taskavault-fullstack/
+acerv-fullstack/
 ├── frontend/              # React + Vite + RainbowKit + wagmi v2
 │   ├── src/
 │   │   ├── themes.js              # 7 genre-specific UI themes
@@ -34,7 +34,7 @@ taskavault-fullstack/
 │   │   │   ├── ThemeProvider.jsx  # Dynamic CSS variable injection
 │   │   │   ├── BackgroundEffect.jsx
 │   │   │   └── TaskInterface.jsx  # Genre-specific task workspaces
-│   │   ├── TaskVaultDashboard.jsx # Main dashboard + vault tab + badges
+│   │   ├── AcervDashboard.jsx # Main dashboard + vault tab + badges
 │   │   ├── Landing.jsx
 │   │   ├── hooks.js               # All contract hooks (incl. badges)
 │   │   ├── abi.js
@@ -79,13 +79,13 @@ taskavault-fullstack/
 │
 ├── contracts/             # Foundry (single supported toolchain)
 │   ├── src/
-│   │   ├── TaskVaultPoints.sol    # Soulbound ERC20 point token
-│   │   ├── TaskVault.sol          # Main contract (tiers + badges + vault)
+│   │   ├── AcervPoints.sol    # Soulbound ERC20 point token
+│   │   ├── AcervVault.sol          # Main contract (tiers + badges + vault)
 │   │   └── mocks/MockUSDG.sol     # 6-decimal test USDG
 │   ├── script/
 │   │   └── Deploy.s.sol           # Foundry deployment
 │   ├── test/
-│   │   └── TaskVault.t.sol        # Foundry test suite (`forge test`)
+│   │   └── AcervVault.t.sol        # Foundry test suite (`forge test`)
 │   ├── lib/                       # git submodules: OpenZeppelin v5.0.2, forge-std
 │   ├── remappings.txt
 │   ├── foundry.toml               # pins solc 0.8.33, via_ir
@@ -107,14 +107,14 @@ taskavault-fullstack/
 
 ```bash
 # 1. Clone and enter
-cd taskavault-fullstack
+cd acerv-fullstack
 
 # 2. Set environment
 cp backend/.env.example backend/.env        # loaded by backend + verifier (env_file)
 cp contracts/.env.example contracts/.env    # only needed to deploy contracts
 # Create a repo-root .env for `docker compose` ${VAR} substitution:
 cat > .env << 'EOF'
-VITE_VAULT_ADDRESS=0x...
+VITE_ACERV_ADDRESS=0x...
 VITE_USDG_ADDRESS=0x...
 VITE_ROBINHOOD_TESTNET_RPC=https://rpc.testnet.chain.robinhood.com
 FRONTEND_URL=http://localhost

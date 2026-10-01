@@ -1,5 +1,5 @@
 /* ============================================
-   TASKVAULT v3 — THEME-AWARE STYLES
+   ACERV v3 — THEME-AWARE STYLES
    Readable. Precise. Genre-shifting.
    ============================================ */
 
@@ -11,12 +11,12 @@
 
 /* --- Buttons --- */
 .btn-primary {
-  background: var(--tv-accent);
-  color: var(--tv-bg);
+  background: var(--acv-accent);
+  color: var(--acv-bg);
   border: none;
   padding: 10px 20px;
-  border-radius: var(--tv-radius);
-  font-family: var(--tv-font);
+  border-radius: var(--acv-radius);
+  font-family: var(--acv-font);
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
@@ -43,11 +43,11 @@
 
 .btn-secondary {
   background: transparent;
-  color: var(--tv-accent);
-  border: 1.5px solid var(--tv-border-bright);
+  color: var(--acv-accent);
+  border: 1.5px solid var(--acv-border-bright);
   padding: 10px 20px;
-  border-radius: var(--tv-radius);
-  font-family: var(--tv-font);
+  border-radius: var(--acv-radius);
+  font-family: var(--acv-font);
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
@@ -58,25 +58,25 @@
   gap: 8px;
 }
 .btn-secondary:hover {
-  border-color: var(--tv-accent);
+  border-color: var(--acv-accent);
   background: rgba(0,0,0,0.05);
 }
 
 .btn-ghost {
   background: transparent;
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   border: none;
   padding: 8px 16px;
-  font-family: var(--tv-font);
+  font-family: var(--acv-font);
   font-weight: 500;
   font-size: 13px;
   cursor: pointer;
   transition: all 0.2s;
-  border-radius: var(--tv-radius);
+  border-radius: var(--acv-radius);
 }
 .btn-ghost:hover {
-  color: var(--tv-text);
-  background: var(--tv-bg-elevated);
+  color: var(--acv-text);
+  background: var(--acv-bg-elevated);
 }
 
 /* --- Landing Page --- */
@@ -93,7 +93,7 @@
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  border-bottom: 1px solid var(--tv-border);
+  border-bottom: 1px solid var(--acv-border);
 }
 
 .hero {
@@ -109,14 +109,14 @@
   align-items: center;
   gap: 8px;
   padding: 6px 14px;
-  background: var(--tv-bg-panel);
-  border: 1px solid var(--tv-border);
+  background: var(--acv-bg-panel);
+  border: 1px solid var(--acv-border);
   border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
-  color: var(--tv-accent);
+  color: var(--acv-accent);
   margin-bottom: 24px;
-  font-family: var(--tv-font-mono);
+  font-family: var(--acv-font-mono);
   letter-spacing: 0.05em;
 }
 
@@ -124,7 +124,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--tv-accent);
+  background: var(--acv-accent);
   animation: pulse 2s infinite;
 }
 
@@ -138,19 +138,19 @@
   margin: 0 0 20px;
   line-height: 1.1;
   font-weight: 800;
-  color: var(--tv-text);
+  color: var(--acv-text);
   letter-spacing: -0.03em;
 }
 
 .hero .accent {
-  color: var(--tv-accent);
+  color: var(--acv-accent);
 }
 
 .hero .lead {
   max-width: 560px;
   margin: 0 0 40px;
   font-size: 1.15rem;
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   line-height: 1.7;
 }
 
@@ -165,15 +165,15 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
-  background: var(--tv-border);
-  border: 1px solid var(--tv-border);
+  background: var(--acv-border);
+  border: 1px solid var(--acv-border);
   max-width: 800px;
-  border-radius: var(--tv-radius);
+  border-radius: var(--acv-radius);
   overflow: hidden;
 }
 
 .landing-stats > div {
-  background: var(--tv-bg-panel);
+  background: var(--acv-bg-panel);
   padding: 24px;
   text-align: left;
 }
@@ -182,13 +182,13 @@
   display: block;
   font-size: 2rem;
   font-weight: 800;
-  color: var(--tv-text);
+  color: var(--acv-text);
   margin-bottom: 4px;
-  font-family: var(--tv-font-mono);
+  font-family: var(--acv-font-mono);
 }
 
 .landing-stats span {
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -199,20 +199,20 @@
   padding: 100px 40px;
   max-width: 1200px;
   margin: 0 auto;
-  border-top: 1px solid var(--tv-border);
+  border-top: 1px solid var(--acv-border);
 }
 
 .section h2 {
   font-size: 2rem;
   margin: 0 0 12px;
   font-weight: 800;
-  color: var(--tv-text);
+  color: var(--acv-text);
   letter-spacing: -0.02em;
 }
 
 .section .sub {
   font-size: 1rem;
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   margin-bottom: 48px;
   max-width: 500px;
 }
@@ -230,29 +230,29 @@
 }
 
 .card {
-  background: var(--tv-bg-panel);
-  border: 1px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg-panel);
+  border: 1px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   padding: 28px;
   transition: all 0.25s ease;
 }
 
 .card:hover {
-  border-color: var(--tv-border-bright);
+  border-color: var(--acv-border-bright);
   transform: translateY(-2px);
-  box-shadow: var(--tv-shadow);
+  box-shadow: var(--acv-shadow);
 }
 
 .card h3 {
   margin: 0 0 8px;
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--tv-text);
+  color: var(--acv-text);
 }
 
 .card p {
   margin: 0;
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   line-height: 1.6;
   font-size: 14px;
 }
@@ -261,17 +261,17 @@
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: var(--tv-bg-elevated);
-  border: 1px solid var(--tv-border);
+  background: var(--acv-bg-elevated);
+  border: 1px solid var(--acv-border);
   display: grid;
   place-items: center;
   font-size: 20px;
   margin-bottom: 16px;
-  color: var(--tv-accent);
+  color: var(--acv-accent);
 }
 
 .tier-card.popular {
-  border-color: var(--tv-accent);
+  border-color: var(--acv-accent);
   position: relative;
 }
 
@@ -280,8 +280,8 @@
   position: absolute;
   top: -10px;
   left: 20px;
-  background: var(--tv-accent);
-  color: var(--tv-bg);
+  background: var(--acv-accent);
+  color: var(--acv-bg);
   padding: 3px 10px;
   border-radius: 4px;
   font-size: 10px;
@@ -293,8 +293,8 @@
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: var(--tv-bg-elevated);
-  border: 1px solid var(--tv-border);
+  background: var(--acv-bg-elevated);
+  border: 1px solid var(--acv-border);
   display: grid;
   place-items: center;
   font-size: 24px;
@@ -302,15 +302,15 @@
 }
 
 .cta-section {
-  background: var(--tv-bg-panel);
+  background: var(--acv-bg-panel);
   max-width: 100%;
   padding: 100px 40px;
   text-align: left;
-  border-top: 1px solid var(--tv-border);
+  border-top: 1px solid var(--acv-border);
 }
 
 .cta-section h2 {
-  color: var(--tv-text);
+  color: var(--acv-text);
   margin-bottom: 12px;
   font-size: 2.5rem;
   font-weight: 800;
@@ -318,7 +318,7 @@
 }
 
 .cta-section .sub {
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   margin-bottom: 32px;
   font-size: 1rem;
   max-width: 500px;
@@ -327,9 +327,9 @@
 .footer {
   text-align: center;
   padding: 40px;
-  color: var(--tv-text-dim);
-  background: var(--tv-bg);
-  border-top: 1px solid var(--tv-border);
+  color: var(--acv-text-dim);
+  background: var(--acv-bg);
+  border-top: 1px solid var(--acv-border);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -375,6 +375,8 @@
 .fm-site .fm-wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; padding-bottom: 16px; }
 .fm-brand { display: flex; align-items: center; gap: 12px; }
 .fm-mark { width: 38px; height: 38px; background: var(--fm-ink); color: var(--fm-paper); display: grid; place-items: center; font-family: 'Archivo Black', sans-serif; font-size: 13px; border: 2px solid var(--fm-ink); box-shadow: 3px 3px 0 var(--fm-accent); }
+.fm-mark-img { width: 38px; height: 38px; border: 2px solid var(--fm-ink); box-shadow: 3px 3px 0 var(--fm-accent); background: var(--fm-ink); display: block; }
+.logo-mark { width: 32px; height: 32px; border-radius: 8px; display: block; }
 .fm-brand b { font-family: 'Archivo Black', sans-serif; font-size: 18px; }
 .fm-brand small { display: block; font-size: 10px; letter-spacing: .22em; color: var(--fm-ink-soft); }
 
@@ -495,7 +497,7 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 
 .dashboard-container {
   min-height: 100vh;
-  background: var(--tv-bg);
+  background: var(--acv-bg);
   transition: background 0.5s ease;
 }
 
@@ -513,8 +515,8 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   align-items: center;
   justify-content: space-between;
   padding: 16px 40px;
-  background: var(--tv-bg-panel);
-  border-bottom: 1px solid var(--tv-border);
+  background: var(--acv-bg-panel);
+  border-bottom: 1px solid var(--acv-border);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -528,7 +530,7 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   gap: 12px;
   font-weight: 800;
   font-size: 16px;
-  color: var(--tv-text);
+  color: var(--acv-text);
   letter-spacing: -0.02em;
 }
 
@@ -536,8 +538,8 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: var(--tv-accent);
-  color: var(--tv-bg);
+  background: var(--acv-accent);
+  color: var(--acv-bg);
   display: grid;
   place-items: center;
   font-size: 14px;
@@ -554,22 +556,22 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   background: none;
   border: none;
   padding: 8px 16px;
-  border-radius: var(--tv-radius);
-  font-family: var(--tv-font);
+  border-radius: var(--acv-radius);
+  font-family: var(--acv-font);
   font-weight: 600;
   font-size: 13px;
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .nav-links button:hover {
-  color: var(--tv-text);
-  background: var(--tv-bg-elevated);
+  color: var(--acv-text);
+  background: var(--acv-bg-elevated);
 }
 
 .nav-links button.active {
-  color: var(--tv-accent);
+  color: var(--acv-accent);
   background: rgba(0,0,0,0.1);
 }
 
@@ -586,9 +588,9 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   justify-content: center;
   gap: 16px;
   padding: 12px 24px;
-  background: var(--tv-bg-panel);
-  border-bottom: 1px solid var(--tv-warning);
-  color: var(--tv-warning);
+  background: var(--acv-bg-panel);
+  border-bottom: 1px solid var(--acv-warning);
+  color: var(--acv-warning);
   font-size: 13px;
   font-weight: 600;
 }
@@ -607,21 +609,21 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 }
 
 .stat-item {
-  background: var(--tv-bg-panel);
-  border: 1px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg-panel);
+  border: 1px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   padding: 20px 24px;
   transition: all 0.3s ease;
 }
 
 .stat-item:hover {
-  border-color: var(--tv-border-bright);
+  border-color: var(--acv-border-bright);
 }
 
 .stat-label {
   font-size: 11px;
   font-weight: 700;
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 6px;
@@ -630,13 +632,13 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 .stat-value {
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--tv-text);
-  font-family: var(--tv-font-mono);
+  color: var(--acv-text);
+  font-family: var(--acv-font-mono);
 }
 
 .stat-sub {
   font-size: 12px;
-  color: var(--tv-text-dim);
+  color: var(--acv-text-dim);
   margin-top: 4px;
 }
 
@@ -648,21 +650,21 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 .section-header h2 {
   font-size: 1.25rem;
   font-weight: 800;
-  color: var(--tv-text);
+  color: var(--acv-text);
   margin-bottom: 4px;
   letter-spacing: -0.01em;
 }
 
 .section-header p {
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   font-size: 14px;
 }
 
 /* --- Registration CTA --- */
 .register-cta {
-  background: var(--tv-bg-panel);
-  border: 1px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg-panel);
+  border: 1px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   padding: 32px;
   margin-bottom: 40px;
 }
@@ -671,11 +673,11 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   font-size: 1.5rem;
   font-weight: 800;
   margin-bottom: 8px;
-  color: var(--tv-text);
+  color: var(--acv-text);
 }
 
 .register-cta > p {
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   margin-bottom: 24px;
   font-size: 14px;
 }
@@ -693,19 +695,19 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
-  background: var(--tv-bg-elevated);
-  border: 1.5px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg-elevated);
+  border: 1.5px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .tier-option:hover {
-  border-color: var(--tv-border-bright);
+  border-color: var(--acv-border-bright);
 }
 
 .tier-option.selected {
-  border-color: var(--tv-accent);
+  border-color: var(--acv-accent);
   background: rgba(0,0,0,0.05);
 }
 
@@ -719,8 +721,8 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: var(--tv-bg);
-  border: 1px solid var(--tv-border);
+  background: var(--acv-bg);
+  border: 1px solid var(--acv-border);
   display: grid;
   place-items: center;
   font-size: 18px;
@@ -729,12 +731,12 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 .tier-option-name {
   font-weight: 700;
   font-size: 14px;
-  color: var(--tv-text);
+  color: var(--acv-text);
 }
 
 .tier-option-deposit {
   font-size: 12px;
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
 }
 
 .tier-option-right {
@@ -744,13 +746,13 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 .tier-option-multiplier {
   font-size: 1.1rem;
   font-weight: 800;
-  color: var(--tv-accent);
-  font-family: var(--tv-font-mono);
+  color: var(--acv-accent);
+  font-family: var(--acv-font-mono);
 }
 
 .tier-option-label {
   font-size: 11px;
-  color: var(--tv-text-dim);
+  color: var(--acv-text-dim);
 }
 
 .register-btn {
@@ -761,19 +763,19 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 .balance-hint {
   margin-top: 12px;
   font-size: 12px;
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   text-align: center;
 }
 
-.text-error { color: var(--tv-danger); font-weight: 600; }
-.text-success { color: var(--tv-accent); font-weight: 600; }
+.text-error { color: var(--acv-danger); font-weight: 600; }
+.text-success { color: var(--acv-accent); font-weight: 600; }
 
 /* --- Error Banner --- */
 .error-banner {
   background: rgba(239,68,68,0.08);
-  color: var(--tv-danger);
+  color: var(--acv-danger);
   padding: 12px 16px;
-  border-radius: var(--tv-radius);
+  border-radius: var(--acv-radius);
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 16px;
@@ -792,9 +794,9 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 }
 
 .task-card {
-  background: var(--tv-bg-panel);
-  border: 1px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg-panel);
+  border: 1px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   padding: 24px;
   transition: all 0.25s ease;
   cursor: pointer;
@@ -809,15 +811,15 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--tv-accent);
+  background: var(--acv-accent);
   opacity: 0;
   transition: opacity 0.3s;
 }
 
 .task-card:hover {
-  border-color: var(--tv-border-bright);
+  border-color: var(--acv-border-bright);
   transform: translateY(-2px);
-  box-shadow: var(--tv-shadow);
+  box-shadow: var(--acv-shadow);
 }
 
 .task-card:hover::before {
@@ -839,8 +841,8 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: var(--tv-bg-elevated);
-  border: 1px solid var(--tv-border);
+  background: var(--acv-bg-elevated);
+  border: 1px solid var(--acv-border);
   display: grid;
   place-items: center;
   font-size: 20px;
@@ -849,23 +851,23 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 .task-available {
   font-size: 11px;
   font-weight: 700;
-  color: var(--tv-text-muted);
-  background: var(--tv-bg-elevated);
+  color: var(--acv-text-muted);
+  background: var(--acv-bg-elevated);
   padding: 4px 10px;
   border-radius: 20px;
-  border: 1px solid var(--tv-border);
+  border: 1px solid var(--acv-border);
 }
 
 .task-title {
   font-size: 15px;
   font-weight: 700;
-  color: var(--tv-text);
+  color: var(--acv-text);
   margin-bottom: 6px;
 }
 
 .task-desc {
   font-size: 13px;
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   line-height: 1.6;
   margin-bottom: 16px;
 }
@@ -880,8 +882,8 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 .task-pay {
   font-size: 14px;
   font-weight: 800;
-  color: var(--tv-accent);
-  font-family: var(--tv-font-mono);
+  color: var(--acv-accent);
+  font-family: var(--acv-font-mono);
 }
 
 .task-difficulty {
@@ -893,9 +895,9 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   letter-spacing: 0.05em;
 }
 
-.task-difficulty.easy { background: rgba(0,212,170,0.1); color: var(--tv-accent); }
-.task-difficulty.medium { background: rgba(245,158,11,0.1); color: var(--tv-warning); }
-.task-difficulty.hard { background: rgba(239,68,68,0.1); color: var(--tv-danger); }
+.task-difficulty.easy { background: rgba(0,212,170,0.1); color: var(--acv-accent); }
+.task-difficulty.medium { background: rgba(245,158,11,0.1); color: var(--acv-warning); }
+.task-difficulty.hard { background: rgba(239,68,68,0.1); color: var(--acv-danger); }
 
 .task-btn {
   width: 100%;
@@ -903,15 +905,15 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 
 /* --- Active Tasks / Empty States --- */
 .active-tasks {
-  background: var(--tv-bg-panel);
-  border: 1px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg-panel);
+  border: 1px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   padding: 48px;
   text-align: center;
 }
 
 .empty-tasks {
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
 }
 
 .empty-tasks .empty-icon {
@@ -921,9 +923,9 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 
 /* --- Info Cards --- */
 .info-card {
-  background: var(--tv-bg-panel);
-  border: 1px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg-panel);
+  border: 1px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   padding: 24px;
 }
 
@@ -931,12 +933,12 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 4px;
-  color: var(--tv-text);
+  color: var(--acv-text);
 }
 
 .info-card > p {
   font-size: 13px;
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   margin-bottom: 16px;
 }
 
@@ -948,20 +950,20 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 .referral-box {
   display: flex;
   gap: 8px;
-  background: var(--tv-bg-elevated);
+  background: var(--acv-bg-elevated);
   padding: 12px;
-  border-radius: var(--tv-radius);
-  border: 1px solid var(--tv-border);
+  border-radius: var(--acv-radius);
+  border: 1px solid var(--acv-border);
   margin-bottom: 20px;
 }
 
 .referral-box code {
   flex: 1;
   font-size: 12px;
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   overflow-x: auto;
   white-space: nowrap;
-  font-family: var(--tv-font-mono);
+  font-family: var(--acv-font-mono);
   padding: 4px 0;
 }
 
@@ -975,9 +977,9 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   display: flex;
   align-items: center;
   gap: 16px;
-  background: var(--tv-bg-panel);
-  border: 1.5px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg-panel);
+  border: 1.5px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   padding: 24px;
   margin-bottom: 24px;
 }
@@ -986,8 +988,8 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   width: 52px;
   height: 52px;
   border-radius: 12px;
-  background: var(--tv-bg-elevated);
-  border: 1px solid var(--tv-border);
+  background: var(--acv-bg-elevated);
+  border: 1px solid var(--acv-border);
   display: grid;
   place-items: center;
   font-size: 28px;
@@ -997,11 +999,11 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   font-size: 1.2rem;
   font-weight: 800;
   margin-bottom: 2px;
-  color: var(--tv-text);
+  color: var(--acv-text);
 }
 
 .current-tier-card p {
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   font-size: 13px;
 }
 
@@ -1012,9 +1014,9 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 }
 
 .upgrade-card {
-  background: var(--tv-bg-panel);
-  border: 1px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg-panel);
+  border: 1px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   padding: 20px;
 }
 
@@ -1029,8 +1031,8 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: var(--tv-bg-elevated);
-  border: 1px solid var(--tv-border);
+  background: var(--acv-bg-elevated);
+  border: 1px solid var(--acv-border);
   display: grid;
   place-items: center;
   font-size: 20px;
@@ -1039,18 +1041,18 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 .upgrade-name {
   font-weight: 700;
   font-size: 14px;
-  color: var(--tv-text);
+  color: var(--acv-text);
 }
 
 .upgrade-multiplier {
   font-size: 12px;
   font-weight: 700;
-  color: var(--tv-accent);
+  color: var(--acv-accent);
 }
 
 .upgrade-cost {
   font-size: 13px;
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
   font-weight: 500;
 }
 
@@ -1058,7 +1060,7 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 .empty-state {
   text-align: center;
   padding: 80px 40px;
-  color: var(--tv-text-muted);
+  color: var(--acv-text-muted);
 }
 
 .empty-state .empty-icon {
@@ -1069,7 +1071,7 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 .empty-state h3 {
   font-size: 1.25rem;
   font-weight: 800;
-  color: var(--tv-text);
+  color: var(--acv-text);
   margin-bottom: 8px;
 }
 
@@ -1094,20 +1096,20 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 }
 
 .skeleton-card {
-  background: var(--tv-bg-panel);
-  border: 1px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg-panel);
+  border: 1px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   padding: 24px;
   height: 180px;
 }
 
 .skeleton {
-  background: var(--tv-border);
+  background: var(--acv-border);
   border-radius: 4px;
 }
 
 .shimmer {
-  background: linear-gradient(90deg, var(--tv-border) 25%, var(--tv-border-bright) 50%, var(--tv-border) 75%);
+  background: linear-gradient(90deg, var(--acv-border) 25%, var(--acv-border-bright) 50%, var(--acv-border) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
@@ -1128,7 +1130,7 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 .progress-bar {
   width: 100%;
   height: 6px;
-  background: var(--tv-bg-elevated);
+  background: var(--acv-bg-elevated);
   border-radius: 3px;
   margin-top: 8px;
   overflow: hidden;
@@ -1136,7 +1138,7 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 
 .progress-fill {
   height: 100%;
-  background: var(--tv-accent);
+  background: var(--acv-accent);
   border-radius: 3px;
   transition: width 0.5s ease;
 }
@@ -1146,7 +1148,7 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: var(--tv-bg);
+  background: var(--acv-bg);
   overflow-y: auto;
   animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -1161,8 +1163,8 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   align-items: center;
   justify-content: space-between;
   padding: 16px 40px;
-  background: var(--tv-bg-panel);
-  border-bottom: 1px solid var(--tv-border);
+  background: var(--acv-bg-panel);
+  border-bottom: 1px solid var(--acv-border);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -1184,17 +1186,17 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  background: var(--tv-bg-elevated);
-  border: 1px solid var(--tv-border);
-  color: var(--tv-accent);
+  background: var(--acv-bg-elevated);
+  border: 1px solid var(--acv-border);
+  color: var(--acv-accent);
   margin-bottom: 16px;
 }
 
 /* Writing task specific */
 .writing-workspace {
-  background: var(--tv-bg-panel);
-  border: 1px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg-panel);
+  border: 1px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   padding: 32px;
   min-height: 400px;
 }
@@ -1205,18 +1207,18 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   background: transparent;
   border: none;
   outline: none;
-  font-family: var(--tv-font);
+  font-family: var(--acv-font);
   font-size: 16px;
   line-height: 1.8;
-  color: var(--tv-text);
+  color: var(--acv-text);
   resize: vertical;
 }
 
 /* Robotics task specific */
 .robotics-viewer {
-  background: var(--tv-bg);
-  border: 1px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg);
+  border: 1px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   aspect-ratio: 16/9;
   display: grid;
   place-items: center;
@@ -1242,17 +1244,17 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 }
 
 .llm-response {
-  background: var(--tv-bg-panel);
-  border: 1px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg-panel);
+  border: 1px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   padding: 24px;
 }
 
 /* Vision task specific */
 .vision-canvas {
-  background: var(--tv-bg);
-  border: 1px solid var(--tv-border);
-  border-radius: var(--tv-radius);
+  background: var(--acv-bg);
+  border: 1px solid var(--acv-border);
+  border-radius: var(--acv-radius);
   position: relative;
   overflow: hidden;
 }
@@ -1266,20 +1268,20 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
 .safety-warning {
   background: rgba(239,68,68,0.06);
   border: 1px solid rgba(239,68,68,0.2);
-  border-radius: var(--tv-radius);
+  border-radius: var(--acv-radius);
   padding: 16px;
   margin-bottom: 24px;
   display: flex;
   align-items: center;
   gap: 12px;
-  color: var(--tv-danger);
+  color: var(--acv-danger);
   font-size: 13px;
   font-weight: 600;
 }
 
 /* Medical task specific */
 .medical-viewer {
-  border-color: var(--tv-border-bright);
+  border-color: var(--acv-border-bright);
   background-image:
     linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
@@ -1290,13 +1292,13 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   position: absolute;
   top: 12px;
   right: 12px;
-  font-family: var(--tv-font-mono);
+  font-family: var(--acv-font-mono);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.18em;
-  color: var(--tv-accent);
+  color: var(--acv-accent);
   background: rgba(6,18,28,0.75);
-  border: 1px solid var(--tv-border-bright);
+  border: 1px solid var(--acv-border-bright);
   border-radius: 999px;
   padding: 4px 10px;
   pointer-events: none;
@@ -1315,8 +1317,8 @@ tr.fm-pick td:first-child::after { content: ' ★ CREW PICK'; font-size: 10px; c
   width: 6px;
   background: repeating-linear-gradient(
     0deg,
-    var(--tv-accent) 0px,
-    var(--tv-accent) 8px,
+    var(--acv-accent) 0px,
+    var(--acv-accent) 8px,
     transparent 8px,
     transparent 16px
   );

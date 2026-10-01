@@ -1,6 +1,6 @@
-# TaskVault Deployment Guide
+# Acerv Deployment Guide
 
-Complete step-by-step guide to deploy TaskVault to production.
+Complete step-by-step guide to deploy Acerv to production.
 
 ## Overview
 
@@ -25,8 +25,8 @@ You need to deploy 4 things:
 
 ```bash
 # Clone with submodules (contracts/lib holds the pinned OpenZeppelin + forge-std)
-git clone --recurse-submodules https://github.com/richardtise/taskvault.git
-cd taskvault/contracts
+git clone --recurse-submodules https://github.com/richardtise/acerv.git
+cd acerv/contracts
 
 # Install Foundry
 curl -L https://foundry.paradigm.xyz | bash
@@ -79,14 +79,14 @@ FRONTEND_URL=https://your-domain.example   # CORS origin of the deployed fronten
 
 # Database (consumed by `npm run dev`/non-Docker runs; the bundled Compose
 # stack injects its own internal MongoDB URI — see "Environment variables")
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/taskvault
+MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/acerv
 
 # Blockchain (use the addresses from Step 1)
 # Public Robinhood Chain RPCs are rate-limited and are not recommended for
 # production — use a dedicated provider key/endpoint here.
 RPC_URL=https://rpc.testnet.chain.robinhood.com
 PRIVATE_KEY=0x...                    # Backend verifier wallet (needs VERIFIER_ROLE + gas)
-VAULT_ADDRESS=0x...                  # TaskVault contract — the only chain address the backend reads
+ACERV_ADDRESS=0x...                  # AcervVault contract — the only chain address the backend reads
 
 # JWT / admin
 JWT_SECRET=generate_a_random_64_char_string
@@ -107,7 +107,7 @@ Edit `.env`:
 ```env
 VITE_ROBINHOOD_RPC=https://rpc.mainnet.chain.robinhood.com
 VITE_ROBINHOOD_TESTNET_RPC=https://rpc.testnet.chain.robinhood.com
-VITE_VAULT_ADDRESS=0x...             # From Step 1
+VITE_ACERV_ADDRESS=0x...             # From Step 1
 VITE_USDG_ADDRESS=0x...              # Your USDG token
 ```
 
@@ -123,21 +123,21 @@ VITE_USDG_ADDRESS=0x...              # Your USDG token
 
 ```bash
 # 1. Clone repo
-git clone https://github.com/yourusername/taskavault.git
-cd taskavault
+git clone https://github.com/yourusername/acerv.git
+cd acerv
 
 # 2. Create the repo-root .env consumed by `docker compose` ${VAR} substitution
 #    and the frontend build args. (gitignored)
 cat > .env << EOF
 # Frontend build args (baked into the Vite bundle)
-VITE_VAULT_ADDRESS=0x...
+VITE_ACERV_ADDRESS=0x...
 VITE_USDG_ADDRESS=0x...
 VITE_ROBINHOOD_TESTNET_RPC=https://rpc.testnet.chain.robinhood.com
 
 # Backend/service overrides
 FRONTEND_URL=http://your-server-ip
 # Leave MONGODB_URI unset to use the bundled MongoDB container; set it to use Atlas.
-# MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/taskvault
+# MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/acerv
 EOF
 
 # 3. Create backend/.env — loaded by the backend and verifier via `env_file`.
@@ -175,7 +175,7 @@ The deployer wallet already has verifier role. If you want a separate bot wallet
 
 **Foundry:**
 ```bash
-cast send $VAULT_ADDRESS "addVerifier(address)" 0xBotWallet \
+cast send $ACERV_ADDRESS "addVerifier(address)" 0xBotWallet \
   --rpc-url $ROBINHOOD_TESTNET_RPC --private-key $PRIVATE_KEY
 ```
 
@@ -254,7 +254,7 @@ host; only the `.env.example` templates are committed.
 
 | Variable | Consumed by | Notes |
 |----------|-------------|-------|
-| `VITE_VAULT_ADDRESS` | frontend build arg | Baked into the Vite bundle at image build time |
+| `VITE_ACERV_ADDRESS` | frontend build arg | Baked into the Vite bundle at image build time |
 | `VITE_USDG_ADDRESS` | frontend build arg | Baked into the Vite bundle at image build time |
 | `VITE_ROBINHOOD_TESTNET_RPC` | frontend build arg | Defaults to the public testnet RPC |
 | `FRONTEND_URL` | backend / verifier | CORS origin; defaults to `http://localhost` |
@@ -270,7 +270,7 @@ host; only the `.env.example` templates are committed.
 | `MONGODB_URI` / `REDIS_URL` | no | Overridden by Compose root `.env`/defaults |
 | `RPC_URL` | yes | Robinhood Chain RPC — use a dedicated provider in production |
 | `PRIVATE_KEY` | yes | Verifier bot wallet key (needs `VERIFIER_ROLE` + gas) |
-| `VAULT_ADDRESS` | yes | TaskVault contract address |
+| `ACERV_ADDRESS` | yes | AcervVault contract address |
 | `JWT_SECRET` | yes | 32+ random characters (enforced at boot) |
 | `JWT_EXPIRES_IN` | no | Default `7d` |
 | `ADMIN_WALLET` / `ADMIN_WALLETS` | yes | Wallet(s) allowed to call `/api/admin/*` |
@@ -297,7 +297,7 @@ host; only the `.env.example` templates are committed.
 ### "Verifier bot not minting points"
 - Check bot wallet has `VERIFIER_ROLE`
 - Check bot has ETH for gas
-- Check `VAULT_ADDRESS` and `PRIVATE_KEY` are correct
+- Check `ACERV_ADDRESS` and `PRIVATE_KEY` are correct
 - Check logs: `docker compose logs verifier`
 
 ### "Frontend can't connect to API"

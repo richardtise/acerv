@@ -38,7 +38,7 @@ export default function Landing() {
     <div className="fm">
       <div className="fm-strip fm-mono">
         <div className="fm-wrap">
-          <span>TaskVault // Field manual v1.0 — Decentralized AI data layer</span>
+          <span>Acerv // Field manual v1.0 — Decentralized AI data layer</span>
           <span className="fm-live"><i /> Robinhood Chain · Testnet live</span>
         </div>
       </div>
@@ -46,8 +46,8 @@ export default function Landing() {
       <header className="fm-site">
         <div className="fm-wrap">
           <div className="fm-brand">
-            <div className="fm-mark">TV</div>
-            <div><b>TASKVAULT</b><small className="fm-mono">WORK ORDERS FOR MACHINES</small></div>
+            <img className="fm-mark-img" src="/acerv-mark.svg" alt="Acerv" width="38" height="38" />
+            <div><b>ACERV</b><small className="fm-mono">WORK ORDERS FOR MACHINES</small></div>
           </div>
           <nav style={{ display: 'flex', gap: 10 }}>
             <a className="fm-btn fm-btn-ghost fm-mono" href="#tiers">Tier sheet</a>
@@ -63,7 +63,7 @@ export default function Landing() {
             <span className="fm-kicker fm-mono"><span className="fm-kicker-n">FORM 001</span> Points economy · No deposits · On-chain receipts</span>
             <h1>Train<br /><span className="fm-outline">machines.</span><br /><span className="fm-hl">Keep receipts.</span></h1>
             <p className="fm-lede">
-              TaskVault is a work-order board for physical AI. Label a grasp, rank two answers,
+              Acerv is a work-order board for physical AI. Label a grasp, rank two answers,
               flag a risky prompt — every approved job is <em>stamped on-chain</em> and compounds into your tier.
             </p>
             <div className="fm-hero-cta">
@@ -152,7 +152,7 @@ export default function Landing() {
       <section className="fm-block">
         <div className="fm-wrap">
           <div className="fm-sec-head">
-            <span className="fm-idx fm-mono">03</span><h2>Why TaskVault</h2>
+            <span className="fm-idx fm-mono">03</span><h2>Why Acerv</h2>
             <p>Three properties, stated plainly. No “revolutionize” anywhere on this page.</p>
           </div>
           <div style={{ height: 26 }} />
@@ -199,7 +199,7 @@ export default function Landing() {
 
       <footer className="fm-footer">
         <div className="fm-wrap fm-mono">
-          <span>TaskVault v1.0.0 — Decentralized AI data layer</span>
+          <span>Acerv v1.0.0 — Decentralized AI data layer</span>
           <span>{new Date().getFullYear()} // Skill gates, not stake gates</span>
         </div>
       </footer>

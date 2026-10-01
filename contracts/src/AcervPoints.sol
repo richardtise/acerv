@@ -4,9 +4,9 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 
-/// @title TaskVaultPoints
-/// @notice Soulbound point token for TaskVault. Non-transferable by default.
-contract TaskVaultPoints is ERC20, AccessControl {
+/// @title AcervPoints
+/// @notice Soulbound point token for Acerv. Non-transferable by default.
+contract AcervPoints is ERC20, AccessControl {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
 
@@ -18,7 +18,7 @@ contract TaskVaultPoints is ERC20, AccessControl {
     event TransfersEnabled();
     event TransferWhitelisted(address indexed account, bool status);
 
-    constructor(address admin) ERC20("TaskVault Points", "TVP") {
+    constructor(address admin) ERC20("Acerv Points", "ACP") {
         _grantRole(DEFAULT_ADMIN_ROLE, admin);
         _grantRole(MINTER_ROLE, admin);
         _grantRole(BURNER_ROLE, admin);
@@ -53,7 +53,7 @@ contract TaskVaultPoints is ERC20, AccessControl {
         if (from != address(0) && to != address(0)) {
             require(
                 transfersEnabled || transferWhitelist[from] || transferWhitelist[to],
-                "TVP: transfers disabled"
+                "ACP: transfers disabled"
             );
         }
         super._update(from, to, value);

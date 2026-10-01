@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Acerv — Task genre theme previews</title>
+<link rel="stylesheet" href="src/index.css" />
+<link rel="stylesheet" href="src/App.css" />
+<style>
+  body { background:#000 !important; }
+  .preview-shell { max-width:1180px; margin:0 auto; padding:32px 24px 80px; font-family:Inter,system-ui,sans-serif; }
+  .preview-top { background:#F2EFE6; color:#16130C; border:2px solid #16130C; border-radius:6px; padding:28px; margin-bottom:24px; box-shadow:6px 6px 0 #FF4D00; }
+  .preview-top h1 { font-size:32px; letter-spacing:-.02em; margin-bottom:8px; }
+  .preview-top p { color:#4C4636; max-width:70ch; font-size:15px; }
+  .preview-nav { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+  .preview-nav a { font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    border:2px solid #16130C; background:#fff; color:#16130C; padding:8px 12px; border-radius:3px; text-decoration:none; }
+  .preview-nav a:hover { background:#16130C; color:#fff; }
+  .theme-snap { border-radius:12px; overflow:hidden; margin-bottom:28px; border:1px solid #333; }
+  .snap-meta { display:flex; gap:14px; align-items:center; justify-content:space-between; padding:14px 20px; background:#16130C; color:#E8E8F0;
+    font-family:'JetBrains Mono',monospace; font-size:12px; flex-wrap:wrap; }
+  .snap-meta b { font-size:14px; }
+  .snap-meta code { opacity:.8; }
+  .snap-stage { padding:0; }
+  /* scope the app theme vars per section; inner markup reuses real App.css classes */
+  .stage { padding:0 0 40px; }
+  .stage .mock-header { display:flex; align-items:center; justify-content:space-between; padding:16px 40px;
+    background:var(--acv-bg-panel); border-bottom:1px solid var(--acv-border); position:sticky; top:0; }
+  .stage .mock-content { max-width:900px; margin:0 auto; padding:40px; }
+  .swatches { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .sw { width:22px; height:22px; border-radius:6px; border:1px solid rgba(255,255,255,.25); display:inline-block; }
+  .note { margin:0 40px 24px; padding:12px 16px; border-radius:8px; font-size:13px; line-height:1.6;
+    background:var(--acv-bg-elevated); border:1px solid var(--acv-border); color:var(--acv-text-muted); }
+  .note strong { color:var(--acv-text); }
+  @media (max-width:768px){ .stage .mock-header,.stage .mock-content{ padding-left:20px; padding-right:20px; } .note{ margin:0 20px 20px; } }
+</style>
+</head>
+<body>
+<div class="preview-shell">
+
+  <div class="preview-top">
+    <h1>Task genre themes — all 7 rooms</h1>
+    <p>These are your real <code>App.css</code> classes (<code>.task-interface-header</code>, <code>.llm-comparison</code>, <code>.robotics-viewer</code>, …) rendered with the real tokens from <code>themes.js</code>. Each section scopes the <code>--acv-*</code> variables to one genre, the way <code>ThemeProvider + TaskInterface</code> does at runtime when a task opens. Scroll to compare — jump with the nav.</p>
+    <nav class="preview-nav">
+      <a href="#theme-llm">🤖 llm</a>
+      <a href="#theme-robotics">🦾 robotics</a>
+      <a href="#theme-vision">🔍 vision</a>
+      <a href="#theme-audio">🎧 audio</a>
+      <a href="#theme-writing">✍️ writing</a>
+      <a href="#theme-safety">🛡️ safety</a>
+      <a href="#theme-medical">🩻 medical</a>
+      <a href="#theme-driving">🛺 driving · NEW</a>
+      <a href="#theme-default">📋 default</a>
+    </nav>
+  </div>
+
+  <!-- ============ LLM ============ -->
+  <div class="theme-snap" id="theme-llm">
+    <div class="snap-meta"><b>🤖 llm</b><span>accent #a78bfa · radius 12px · Inter · violet glow bg</span><span class="swatches"><span class="sw" style="background:#0a0a12"></span><span class="sw" style="background:#10101a"></span><span class="sw" style="background:#a78bfa"></span><span class="sw" style="background:#60a5fa"></span></span></div>
+    <div class="stage" style="--acv-bg:#0a0a12; --acv-bg-panel:#10101a; --acv-bg-elevated:#161624; --acv-text:#e0e0f0; --acv-text-muted:#6b6b8a; --acv-text-dim:#4a4a6e; --acv-border:#1e1e32; --acv-border-bright:#2a2a42; --acv-accent:#a78bfa; --acv-accent-secondary:#60a5fa; --acv-danger:#ef4444; --acv-warning:#f59e0b; --acv-font:'Inter',sans-serif; --acv-font-mono:'JetBrains Mono',monospace; --acv-radius:12px; --acv-shadow:0 4px 24px rgba(167,139,250,0.1); background:var(--acv-bg); color:var(--acv-text); font-family:var(--acv-font);">
+      <div class="mock-header"><div style="display:flex;align-items:center;gap:16px"><button class="btn-ghost" style="font-size:18px">←</button><div><div style="font-size:13px;font-weight:600;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em">Task #llm-rank-042</div><div style="font-size:16px;font-weight:700;color:var(--acv-text)">Rank two explanations</div></div></div><button class="btn-primary">Submit Work</button></div>
+      <div class="mock-content">
+        <div class="task-genre-badge">🤖 LLM · ranking</div>
+        <h1 style="font-size:1.75rem;font-weight:800;margin-bottom:8px">Which explanation is clearer?</h1>
+        <p style="color:var(--acv-text-muted);font-size:15px;line-height:1.7;margin-bottom:24px">Read the prompt, pick the better response. Click a card to select it.</p>
+        <div style="background:var(--acv-bg-panel);border:1px solid var(--acv-border);border-radius:var(--acv-radius);padding:20px;margin-bottom:24px"><h3 style="font-size:14px;font-weight:700;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Prompt</h3><p style="font-size:14px;line-height:1.7">Explain why the sky is blue to a 10-year-old in two sentences.</p></div>
+        <div class="llm-comparison">
+          <div class="llm-response" style="border:2px solid var(--acv-accent);cursor:pointer"><div style="font-size:11px;font-weight:700;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Response A ★ selected</div><p style="font-size:14px;line-height:1.7">Sunlight looks white but it's made of colors. Blue light bounces off air molecules in all directions, so the whole sky looks blue!</p></div>
+          <div class="llm-response"><div style="font-size:11px;font-weight:700;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Response B</div><p style="font-size:14px;line-height:1.7">The sky is blue due to Rayleigh scattering whereby short-wavelength photons undergo atmospheric diffusion proportional to λ⁻⁴…</p></div>
+        </div>
+        <div class="note" style="margin:24px 0 0">Note the <strong>12px radius</strong> (softest of all themes), violet accent, and the double radial glow background. This is the friendliest-looking room.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ROBOTICS ============ -->
+  <div class="theme-snap" id="theme-robotics">
+    <div class="snap-meta"><b>🦾 robotics</b><span>accent #ff9f1c · radius 2px · full mono · orange grid bg</span><span class="swatches"><span class="sw" style="background:#08080c"></span><span class="sw" style="background:#0d0d14"></span><span class="sw" style="background:#ff9f1c"></span><span class="sw" style="background:#00d4aa"></span></span></div>
+    <div class="stage" style="--acv-bg:#08080c; --acv-bg-panel:#0d0d14; --acv-bg-elevated:#14141c; --acv-text:#e0e0e0; --acv-text-muted:#5a5a6e; --acv-text-dim:#3a3a4e; --acv-border:#1a1a24; --acv-border-bright:#252532; --acv-accent:#ff9f1c; --acv-accent-secondary:#00d4aa; --acv-danger:#ef4444; --acv-warning:#f59e0b; --acv-font:'JetBrains Mono','Courier New',monospace; --acv-font-mono:'JetBrains Mono',monospace; --acv-radius:2px; --acv-shadow:0 0 20px rgba(255,159,28,0.05); background:var(--acv-bg); color:var(--acv-text); font-family:var(--acv-font);">
+      <div class="mock-header"><div style="display:flex;align-items:center;gap:16px"><button class="btn-ghost" style="font-size:18px">←</button><div><div style="font-size:13px;font-weight:600;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em">Task #robot-phase-117</div><div style="font-size:16px;font-weight:700;color:var(--acv-text)">Label the lift phases</div></div></div><button class="btn-primary">Submit Work</button></div>
+      <div class="mock-content">
+        <div class="task-genre-badge">🦾 robotics · phase-label</div>
+        <h1 style="font-size:1.75rem;font-weight:800;margin-bottom:8px">MARK PHASES: APPROACH → GRASP → LIFT</h1>
+        <p style="color:var(--acv-text-muted);font-size:15px;line-height:1.7;margin-bottom:24px">12-sec teleop clip. Everything here is monospace, sharp 2px corners — terminal aesthetic.</p>
+        <div class="robotics-viewer" style="margin-bottom:24px"><div class="robotics-grid-overlay"></div><div style="text-align:center;color:var(--acv-text-muted);z-index:1"><div style="font-size:48px;margin-bottom:12px">🦾</div><p>[ VIDEO: arm grasp, 0:12 ]</p></div></div>
+        <div style="background:var(--acv-bg-panel);border:1px solid var(--acv-border);border-radius:var(--acv-radius);padding:24px">
+          <h3 style="font-size:14px;font-weight:700;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px">Phase labels</h3>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--acv-bg);border-radius:var(--acv-radius);border:1px solid var(--acv-accent)"><span style="font-weight:600">▣ Approach ✓ 0:02</span><button class="btn-ghost" style="margin-left:auto;font-size:12px">Marked</button></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--acv-bg);border-radius:var(--acv-radius);border:1px solid var(--acv-border)"><span style="font-weight:600">▣ Grasp</span><button class="btn-ghost" style="margin-left:auto;font-size:12px">Mark Timestamp</button></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--acv-bg);border-radius:var(--acv-radius);border:1px solid var(--acv-border)"><span style="font-weight:600">▣ Lift</span><button class="btn-ghost" style="margin-left:auto;font-size:12px">Mark Timestamp</button></div>
+          </div>
+        </div>
+        <div class="note" style="margin:24px 0 0">Sharpest room: <strong>2px radius, all-mono type</strong>, orange grid overlay. Feels like machine telnet — very distinct from the others.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ VISION ============ -->
+  <div class="theme-snap" id="theme-vision">
+    <div class="snap-meta"><b>🔍 vision</b><span>accent #f43f5e · radius 6px · rose grid bg</span><span class="swatches"><span class="sw" style="background:#050508"></span><span class="sw" style="background:#0a0a10"></span><span class="sw" style="background:#f43f5e"></span><span class="sw" style="background:#fb7185"></span></span></div>
+    <div class="stage" style="--acv-bg:#050508; --acv-bg-panel:#0a0a10; --acv-bg-elevated:#101018; --acv-text:#e8e8f0; --acv-text-muted:#5a5a70; --acv-text-dim:#3a3a50; --acv-border:#151520; --acv-border-bright:#202030; --acv-accent:#f43f5e; --acv-accent-secondary:#fb7185; --acv-danger:#ef4444; --acv-warning:#f59e0b; --acv-font:'Inter',sans-serif; --acv-font-mono:'JetBrains Mono',monospace; --acv-radius:6px; --acv-shadow:0 4px 24px rgba(244,63,94,0.08); background:var(--acv-bg); color:var(--acv-text); font-family:var(--acv-font);">
+      <div class="mock-header"><div style="display:flex;align-items:center;gap:16px"><button class="btn-ghost" style="font-size:18px">←</button><div><div style="font-size:13px;font-weight:600;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em">Task #vision-label-089</div><div style="font-size:16px;font-weight:700;color:var(--acv-text)">Flag PCB defects</div></div></div><button class="btn-primary">Submit Work</button></div>
+      <div class="mock-content">
+        <div class="task-genre-badge">🔍 vision · inspection</div>
+        <h1 style="font-size:1.75rem;font-weight:800;margin-bottom:8px">Inspect the board</h1>
+        <p style="color:var(--acv-text-muted);font-size:15px;line-height:1.7;margin-bottom:24px">Darkest room (#050508). Toggle every defect you see.</p>
+        <div class="vision-canvas" style="margin-bottom:24px;aspect-ratio:16/9;background:var(--acv-bg-elevated);display:grid;place-items:center;color:var(--acv-text-muted)"><div style="text-align:center"><div style="font-size:48px;margin-bottom:12px">🔍</div><p>[ PCB IMAGE 1280×720 ]</p></div></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn-secondary" style="font-size:13px;background:var(--acv-accent);color:#fff">Solder Bridge</button><button class="btn-secondary" style="font-size:13px">Crack</button><button class="btn-secondary" style="font-size:13px">Discoloration</button><button class="btn-secondary" style="font-size:13px">Contamination</button><button class="btn-secondary" style="font-size:13px">No Defect</button></div>
+        <div class="note" style="margin:24px 0 0">Rose-red accent on near-black. Selected chips go solid <strong>#f43f5e</strong> — currently the only multi-select room, and it lets you pick <strong>"No Defect" + "Crack"</strong> together (bug).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ AUDIO ============ -->
+  <div class="theme-snap" id="theme-audio">
+    <div class="snap-meta"><b>🎧 audio</b><span>accent #4ade80 · radius 8px · green glow bg</span><span class="swatches"><span class="sw" style="background:#080c08"></span><span class="sw" style="background:#0d140d"></span><span class="sw" style="background:#4ade80"></span><span class="sw" style="background:#22c55e"></span></span></div>
+    <div class="stage" style="--acv-bg:#080c08; --acv-bg-panel:#0d140d; --acv-bg-elevated:#141c14; --acv-text:#e0e8e0; --acv-text-muted:#5a6e5a; --acv-text-dim:#3a4e3a; --acv-border:#1a241a; --acv-border-bright:#253225; --acv-accent:#4ade80; --acv-accent-secondary:#22c55e; --acv-danger:#ef4444; --acv-warning:#f59e0b; --acv-font:'Inter',sans-serif; --acv-font-mono:'JetBrains Mono',monospace; --acv-radius:8px; --acv-shadow:0 4px 24px rgba(74,222,128,0.08); background:var(--acv-bg); color:var(--acv-text); font-family:var(--acv-font);">
+      <div class="mock-header"><div style="display:flex;align-items:center;gap:16px"><button class="btn-ghost" style="font-size:18px">←</button><div><div style="font-size:13px;font-weight:600;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em">Task #audio-transcribe-033</div><div style="font-size:16px;font-weight:700;color:var(--acv-text)">Transcribe the clip</div></div></div><button class="btn-primary">Submit Work</button></div>
+      <div class="mock-content">
+        <div class="task-genre-badge">🎧 audio · transcribe</div>
+        <h1 style="font-size:1.75rem;font-weight:800;margin-bottom:8px">Type what you hear</h1>
+        <p style="color:var(--acv-text-muted);font-size:15px;line-height:1.7;margin-bottom:24px">0:47 warehouse dispatch clip. Green-tinted room, glow rising from the bottom.</p>
+        <div style="background:var(--acv-bg-panel);border:1px solid var(--acv-border);border-radius:var(--acv-radius);padding:32px;margin-bottom:24px;text-align:center"><div style="font-size:48px;margin-bottom:16px">🎧</div><div style="display:flex;gap:3px;justify-content:center;align-items:flex-end;height:56px;margin-bottom:16px"><span style="width:6px;height:20px;background:var(--acv-accent);border-radius:2px;display:inline-block"></span><span style="width:6px;height:44px;background:var(--acv-accent);border-radius:2px;display:inline-block"></span><span style="width:6px;height:30px;background:var(--acv-accent);border-radius:2px;display:inline-block;opacity:.6"></span><span style="width:6px;height:52px;background:var(--acv-accent);border-radius:2px;display:inline-block"></span><span style="width:6px;height:26px;background:var(--acv-accent);border-radius:2px;display:inline-block;opacity:.6"></span><span style="width:6px;height:38px;background:var(--acv-accent);border-radius:2px;display:inline-block"></span><span style="width:6px;height:48px;background:var(--acv-accent);border-radius:2px;display:inline-block"></span><span style="width:6px;height:18px;background:var(--acv-accent);border-radius:2px;display:inline-block;opacity:.6"></span><span style="width:6px;height:34px;background:var(--acv-accent);border-radius:2px;display:inline-block"></span></div><p style="color:var(--acv-text-muted)">▶ 0:47 waveform</p></div>
+        <div class="writing-workspace"><textarea placeholder="Type what you hear…" style="font-family:var(--acv-font);min-height:120px">Forklift seven, bay three is clear—</textarea></div>
+        <div class="note" style="margin:24px 0 0">Same editor chrome as writing, but green accent + dark room. Closest sibling to <strong>vision</strong> in feel — only hue separates them.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ WRITING ============ -->
+  <div class="theme-snap" id="theme-writing">
+    <div class="snap-meta"><b>✍️ writing</b><span>accent #1c1917 (near-black on paper!) · radius 4px · Merriweather serif · LIGHT theme</span><span class="swatches"><span class="sw" style="background:#fafaf9;border-color:#999"></span><span class="sw" style="background:#ffffff;border-color:#999"></span><span class="sw" style="background:#1c1917"></span></span></div>
+    <div class="stage" style="--acv-bg:#fafaf9; --acv-bg-panel:#ffffff; --acv-bg-elevated:#f5f5f4; --acv-text:#1c1917; --acv-text-muted:#78716c; --acv-text-dim:#a8a29e; --acv-border:#e7e5e4; --acv-border-bright:#d6d3d1; --acv-accent:#1c1917; --acv-accent-secondary:#44403c; --acv-danger:#dc2626; --acv-warning:#d97706; --acv-font:'Merriweather','Georgia',serif; --acv-font-mono:'JetBrains Mono',monospace; --acv-radius:4px; --acv-shadow:0 1px 3px rgba(0,0,0,0.05); background:var(--acv-bg); color:var(--acv-text); font-family:var(--acv-font);">
+      <div class="mock-header"><div style="display:flex;align-items:center;gap:16px"><button class="btn-ghost" style="font-size:18px">←</button><div><div style="font-size:13px;font-weight:600;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em">Task #writing-eval-015</div><div style="font-size:16px;font-weight:700;color:var(--acv-text)">Draft the summary</div></div></div><button class="btn-primary" style="background:#1c1917;color:#fff">Submit Work</button></div>
+      <div class="mock-content">
+        <div class="task-genre-badge">✍️ writing · draft</div>
+        <h1 style="font-size:1.75rem;font-weight:800;margin-bottom:8px">Summarise the following report</h1>
+        <p style="color:var(--acv-text-muted);font-size:15px;line-height:1.7;margin-bottom:24px">The only light theme — paper background, serif everything. Buttons go near-black instead of colored.</p>
+        <div style="background:var(--acv-bg-panel);border:1px solid var(--acv-border);border-radius:var(--acv-radius);padding:20px;margin-bottom:24px"><h3 style="font-size:14px;font-weight:700;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Source text</h3><p style="font-size:14px;line-height:1.8;white-space:pre-wrap">Unit 7 completed 412 picks with 2 mislabels. Throughput up 6% week-over-week…</p></div>
+        <div class="writing-workspace"><textarea placeholder="Start writing…" style="font-family:var(--acv-font);min-height:200px">The shift report shows steady throughput with…</textarea><div style="margin-top:16px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;color:var(--acv-text-muted)">42 words</span></div></div>
+        <div class="note" style="margin:24px 0 0">Biggest outlier — and deliberately so. Serif + paper reads "editorial desk". Watch out: the accent <strong>is the ink color</strong>, so selected states and the submit button lose the color signal every other room has.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SAFETY ============ -->
+  <div class="theme-snap" id="theme-safety">
+    <div class="snap-meta"><b>🛡️ safety</b><span>accent #ef4444 · radius 2px · full mono · hazard-stripe bg</span><span class="swatches"><span class="sw" style="background:#0c0808"></span><span class="sw" style="background:#140d0d"></span><span class="sw" style="background:#ef4444"></span></span></div>
+    <div class="stage" style="--acv-bg:#0c0808; --acv-bg-panel:#140d0d; --acv-bg-elevated:#1c1414; --acv-text:#f0e8e8; --acv-text-muted:#705a5a; --acv-text-dim:#503a3a; --acv-border:#241a1a; --acv-border-bright:#322525; --acv-accent:#ef4444; --acv-accent-secondary:#f87171; --acv-danger:#dc2626; --acv-warning:#fbbf24; --acv-font:'JetBrains Mono',monospace; --acv-font-mono:'JetBrains Mono',monospace; --acv-radius:2px; --acv-shadow:0 0 20px rgba(239,68,68,0.08); background:var(--acv-bg); color:var(--acv-text); font-family:var(--acv-font);">
+      <div class="mock-header"><div style="display:flex;align-items:center;gap:16px"><button class="btn-ghost" style="font-size:18px">←</button><div><div style="font-size:13px;font-weight:600;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em">Task #safety-redteam-008</div><div style="font-size:16px;font-weight:700;color:var(--acv-text)">Rate the prompt risk</div></div></div><button class="btn-primary" style="background:#ef4444;color:#fff">Submit Work</button></div>
+      <div class="mock-content">
+        <div class="task-genre-badge">🛡️ safety · redteam</div>
+        <h1 style="font-size:1.75rem;font-weight:800;margin-bottom:8px">CLASSIFY RISK LEVEL</h1>
+        <p style="color:var(--acv-text-muted);font-size:15px;line-height:1.7;margin-bottom:24px">Hazard-stripe background, all mono, red everything. The alarm room.</p>
+        <div class="safety-warning"><span style="font-size:20px">⚠️</span><span>This task involves identifying potentially harmful content.</span></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px"><span style="font-size:12px;padding:4px 10px;border:1px solid var(--acv-border);border-radius:999px;color:var(--acv-text-muted)">jailbreak</span><span style="font-size:12px;padding:4px 10px;border:1px solid var(--acv-border);border-radius:999px;color:var(--acv-text-muted)"> instructions-facilitation</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:24px"><button class="btn-secondary" style="font-size:13px">Safe</button><button class="btn-secondary" style="font-size:13px">Mild Risk</button><button class="btn-secondary" style="font-size:13px;background:var(--acv-accent);color:#fff">High Risk</button><button class="btn-secondary" style="font-size:13px">Critical</button></div>
+        <div class="note" style="margin:24px 0 0">Sibling of <strong>robotics</strong> (both 2px + mono) but red-on-maroon instead of orange-on-black. Highest-contrast CTA of all rooms.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MEDICAL (NEW) ============ -->
+  <div class="theme-snap" id="theme-medical">
+    <div class="snap-meta"><b>🩻 medical · NEW</b><span>accent #38bdf8 · radius 10px · sky-blue clinical · just added</span><span class="swatches"><span class="sw" style="background:#060b12"></span><span class="sw" style="background:#0b1420"></span><span class="sw" style="background:#38bdf8"></span><span class="sw" style="background:#2dd4bf"></span></span></div>
+    <div class="stage" style="--acv-bg:#060b12; --acv-bg-panel:#0b1420; --acv-bg-elevated:#111f30; --acv-text:#e6f0f6; --acv-text-muted:#6f8aa0; --acv-text-dim:#46586a; --acv-border:#16283a; --acv-border-bright:#21374e; --acv-accent:#38bdf8; --acv-accent-secondary:#2dd4bf; --acv-danger:#ef4444; --acv-warning:#f59e0b; --acv-font:'Inter',sans-serif; --acv-font-mono:'JetBrains Mono',monospace; --acv-radius:10px; --acv-shadow:0 4px 24px rgba(56,189,248,0.10); background:var(--acv-bg); color:var(--acv-text); font-family:var(--acv-font);">
+      <div class="mock-header"><div style="display:flex;align-items:center;gap:16px"><button class="btn-ghost" style="font-size:18px">←</button><div><div style="font-size:13px;font-weight:600;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em">Task #medical-image-001</div><div style="font-size:16px;font-weight:700;color:var(--acv-text)">Annotate the chest scan</div></div></div><button class="btn-primary">Submit Work</button></div>
+      <div class="mock-content">
+        <div class="task-genre-badge">🩻 medical · annotation</div>
+        <h1 style="font-size:1.75rem;font-weight:800;margin-bottom:8px">Mark findings + triage</h1>
+        <p style="color:var(--acv-text-muted);font-size:15px;line-height:1.7;margin-bottom:24px">Clinical-assist room: multi-select findings with an exclusive "No Abnormality", triage priority, optional note.</p>
+        <div class="safety-warning" style="background:rgba(56,189,248,0.06);border-color:rgba(56,189,248,0.25);color:var(--acv-accent)"><span style="font-size:20px">🏥</span><span>Clinical-assist annotation — your labels train review tools, never diagnose patients.</span></div>
+        <div class="vision-canvas medical-viewer" style="margin-bottom:24px;aspect-ratio:16/9;background:var(--acv-bg-elevated);display:grid;place-items:center;color:var(--acv-text-muted);position:relative"><div style="text-align:center"><div style="font-size:48px;margin-bottom:12px">🩻</div><p>[ DICOM VIEWER 1024×1024 ]</p></div><span style="position:absolute;top:12px;right:12px;font-family:var(--acv-font-mono);font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--acv-accent);background:rgba(6,18,28,.75);border:1px solid var(--acv-border-bright);border-radius:999px;padding:4px 10px">ANNOTATION MODE</span></div>
+        <h3 style="font-size:14px;font-weight:700;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Findings</h3>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px"><button class="btn-secondary" style="font-size:13px;background:var(--acv-accent);color:#06121c;border-color:var(--acv-accent)">Opacity</button><button class="btn-secondary" style="font-size:13px">Nodule</button><button class="btn-secondary" style="font-size:13px">Effusion</button><button class="btn-secondary" style="font-size:13px">No Abnormality</button></div>
+        <h3 style="font-size:14px;font-weight:700;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Triage priority</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:24px"><button class="btn-secondary" style="font-size:13px">Routine</button><button class="btn-secondary" style="font-size:13px;background:var(--acv-accent);color:#06121c;border-color:var(--acv-accent)">Urgent</button><button class="btn-secondary" style="font-size:13px">Critical</button></div>
+        <div class="note" style="margin:24px 0 0">Sky-blue clinical identity, 10px radius, "ANNOTATION MODE" badge on the viewer. Unlike vision, <strong>"No Abnormality" is exclusive</strong> — picking it clears the rest (the contradiction bug, fixed by design).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ DRIVING (NEW) ============ -->
+  <div class="theme-snap" id="theme-driving">
+    <div class="snap-meta"><b>🛺 driving · NEW</b><span>accent #facc15 · radius 6px · hazard-amber · 3 annotation modes</span><span class="swatches"><span class="sw" style="background:#0b0e05"></span><span class="sw" style="background:#131a0b"></span><span class="sw" style="background:#facc15"></span><span class="sw" style="background:#fb923c"></span></span></div>
+    <div class="stage" style="--acv-bg:#0b0e05; --acv-bg-panel:#131a0b; --acv-bg-elevated:#1c2611; --acv-text:#eef3df; --acv-text-muted:#8a9570; --acv-text-dim:#5a6346; --acv-border:#232d16; --acv-border-bright:#33411f; --acv-accent:#facc15; --acv-accent-secondary:#fb923c; --acv-danger:#ef4444; --acv-warning:#fb923c; --acv-font:'Inter',sans-serif; --acv-font-mono:'JetBrains Mono',monospace; --acv-radius:6px; --acv-shadow:0 4px 24px rgba(250,204,21,0.10); background:var(--acv-bg); color:var(--acv-text); font-family:var(--acv-font);">
+      <div class="mock-header"><div style="display:flex;align-items:center;gap:16px"><button class="btn-ghost" style="font-size:18px">←</button><div><div style="font-size:13px;font-weight:600;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em">Task #hazard-event-001</div><div style="font-size:16px;font-weight:700;color:var(--acv-text)">Street Hazard Tagging — Lagos Evening</div></div></div><button class="btn-primary">Submit Work</button></div>
+      <div class="mock-content">
+        <div class="task-genre-badge">🛺 driving · hazard-event</div>
+        <h1 style="font-size:1.75rem;font-weight:800;margin-bottom:8px">Tag every long-tail hazard</h1>
+        <p style="color:var(--acv-text-muted);font-size:15px;line-height:1.7;margin-bottom:24px">One room, three modes: <b style="color:var(--acv-text)">hazard-event</b> (timestamp + tag), <b style="color:var(--acv-text)">behavior-narrate</b> (maneuver tags + 30-char narration), <b style="color:var(--acv-text)">scene-attribute</b> (structured scene fields). Clips are anonymised — no GPS shown or collected.</p>
+        <div class="robotics-viewer" style="margin-bottom:12px;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:6px;background:repeating-linear-gradient(0deg,var(--acv-accent) 0px,var(--acv-accent) 8px,transparent 8px,transparent 16px);opacity:.7"></div><div style="text-align:center;color:var(--acv-text-muted)"><div style="font-size:48px;margin-bottom:12px">🛺</div><p>[ 0:30 STREET CLIP — JUNCTION AT DUSK ]</p></div></div>
+        <p style="font-size:12px;color:var(--acv-text-muted);margin-bottom:24px">Anonymised 0:30 clip — junction approach at dusk. Faces and plates blurred.</p>
+        <div style="background:var(--acv-bg-panel);border:1px solid var(--acv-border);border-radius:var(--acv-radius);padding:20px;margin-bottom:16px">
+          <h3 style="font-size:13px;font-weight:700;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Tag hazard event</h3>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px"><span class="btn-secondary" style="font-size:13px">Lane-splitting bike ▾</span><span class="btn-secondary mono" style="font-size:13px;font-family:var(--acv-font-mono)">12.4s</span><button class="btn-primary" style="font-size:13px">Tag event at 12.4s</button></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px">
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--acv-bg-panel);border:1px solid var(--acv-border);border-radius:var(--acv-radius);font-size:13px"><span style="font-family:var(--acv-font-mono);color:var(--acv-accent);font-size:12px;font-weight:800">4.2s</span><span style="font-weight:700">Pedestrian incursion</span><span style="color:var(--acv-text-muted)">hawker steps off median</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--acv-bg-panel);border:1px solid var(--acv-border);border-radius:var(--acv-radius);font-size:13px"><span style="font-family:var(--acv-font-mono);color:var(--acv-accent);font-size:12px;font-weight:800">12.4s</span><span style="font-weight:700">Lane-splitting bike</span><span style="color:var(--acv-text-muted)">okada between bus and car</span></div>
+        </div>
+        <h3 style="font-size:14px;font-weight:700;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Also in this room</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+          <div style="background:var(--acv-bg-panel);border:1px solid var(--acv-border);border-radius:var(--acv-radius);padding:16px"><div style="font-size:12px;font-weight:800;color:var(--acv-accent);margin-bottom:6px">BEHAVIOR-NARRATE</div><p style="font-size:13px;color:var(--acv-text-muted)">Maneuver chips + 1–2 sentence "what + why" narration (min 30 chars).</p></div>
+          <div style="background:var(--acv-bg-panel);border:1px solid var(--acv-border);border-radius:var(--acv-radius);padding:16px"><div style="font-size:12px;font-weight:800;color:var(--acv-accent);margin-bottom:6px">SCENE-ATTRIBUTE</div><p style="font-size:13px;color:var(--acv-text-muted)">Surface · markings · density · lighting required + weather, vehicle mix.</p></div>
+        </div>
+        <div class="note" style="margin:24px 0 0">Hazard-amber identity with a striped viewer edge. <strong>Annotation-first by design:</strong> annotators see blurred clips only — raw location traces never enter the product.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ DEFAULT ============ -->
+  <div class="theme-snap" id="theme-default">
+    <div class="snap-meta"><b>📋 default / generic / medical</b><span>accent #00d4aa · radius 8px · Inter · teal grid (also the landing + dashboard theme)</span><span class="swatches"><span class="sw" style="background:#0b0b12"></span><span class="sw" style="background:#12121c"></span><span class="sw" style="background:#00d4aa"></span><span class="sw" style="background:#6366f1"></span></span></div>
+    <div class="stage" style="--acv-bg:#0b0b12; --acv-bg-panel:#12121c; --acv-bg-elevated:#1a1a26; --acv-text:#e8e8f0; --acv-text-muted:#6b6b80; --acv-text-dim:#4a4a5e; --acv-border:#1e1e2e; --acv-border-bright:#2a2a3e; --acv-accent:#00d4aa; --acv-accent-secondary:#6366f1; --acv-danger:#ef4444; --acv-warning:#f59e0b; --acv-font:'Inter',-apple-system,sans-serif; --acv-font-mono:'JetBrains Mono',monospace; --acv-radius:8px; --acv-shadow:0 4px 24px rgba(0,0,0,0.4); background:var(--acv-bg); color:var(--acv-text); font-family:var(--acv-font);">
+      <div class="mock-header"><div style="display:flex;align-items:center;gap:16px"><button class="btn-ghost" style="font-size:18px">←</button><div><div style="font-size:13px;font-weight:600;color:var(--acv-text-muted);text-transform:uppercase;letter-spacing:.1em">Task #medical-003</div><div style="font-size:16px;font-weight:700;color:var(--acv-text)">Unclassified task</div></div></div><button class="btn-primary">Submit Work</button></div>
+      <div class="mock-content">
+        <div class="task-genre-badge">📋 generic</div>
+        <h1 style="font-size:1.75rem;font-weight:800;margin-bottom:8px">Follow the instructions</h1>
+        <p style="color:var(--acv-text-muted);font-size:15px;line-height:1.7;margin-bottom:24px">Fallback room: unknown genre, legacy ids, and <code>medical</code> (mapped to default) all land here. This is also the landing + dashboard look.</p>
+        <div class="writing-workspace"><textarea placeholder="Enter your response…" style="font-family:var(--acv-font);min-height:200px"></textarea></div>
+        <div class="note" style="margin:24px 0 0">Teal accent, 8px radius, subtle grid. If <strong>medical</strong> deserves its own identity (it currently shares this), that's a gap — every other modality has a room except medical.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-top" style="box-shadow:6px 6px 0 #16130C">
+    <h1 style="font-size:22px">What to look at</h1>
+    <p>• <b>robotics vs safety</b> share the mono + 2px DNA — check they feel distinct enough (orange vs red).<br>• <b>vision vs audio vs llm</b> are the same layout language in different hues — decide if that's "family" or "repetitive".<br>• <b>writing</b> is the outlier (light + serif) — intentional, but its buttons lose the color signal.<br>• <b>medical</b> is sky-blue clinical; <b>driving</b> (NEW) is hazard-amber with striped viewer edge.<br>• Backend now has 15 categories / 8 modalities; seeds at 14 tasks (driving ×3).<br><br>These mocks are static — buttons/textareas don't submit. To click through the real thing: <code style="background:#16130C;color:#fff;padding:1px 6px;border-radius:3px">npm run dev</code> in <code>frontend/</code>, connect a wallet, open any task — <code>TaskInterface</code> calls <code>setTheme(genre)</code> on mount.</p>
+  </div>
+
+</div>
+</body>
+</html>

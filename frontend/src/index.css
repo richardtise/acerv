@@ -6,24 +6,24 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap');
 
 :root {
-  --tv-bg: #0b0b12;
-  --tv-bg-panel: #12121c;
-  --tv-bg-elevated: #1a1a26;
-  --tv-text: #e8e8f0;
-  --tv-text-muted: #6b6b80;
-  --tv-text-dim: #4a4a5e;
-  --tv-border: #1e1e2e;
-  --tv-border-bright: #2a2a3e;
-  --tv-accent: #00d4aa;
-  --tv-accent-secondary: #6366f1;
-  --tv-danger: #ef4444;
-  --tv-warning: #f59e0b;
-  --tv-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --tv-font-mono: 'JetBrains Mono', monospace;
-  --tv-radius: 8px;
-  --tv-shadow: 0 4px 24px rgba(0,0,0,0.4);
-  --tv-bg-image: none;
-  --tv-bg-size: auto;
+  --acv-bg: #0b0b12;
+  --acv-bg-panel: #12121c;
+  --acv-bg-elevated: #1a1a26;
+  --acv-text: #e8e8f0;
+  --acv-text-muted: #6b6b80;
+  --acv-text-dim: #4a4a5e;
+  --acv-border: #1e1e2e;
+  --acv-border-bright: #2a2a3e;
+  --acv-accent: #00d4aa;
+  --acv-accent-secondary: #6366f1;
+  --acv-danger: #ef4444;
+  --acv-warning: #f59e0b;
+  --acv-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --acv-font-mono: 'JetBrains Mono', monospace;
+  --acv-radius: 8px;
+  --acv-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --acv-bg-image: none;
+  --acv-bg-size: auto;
 }
 
 * {
@@ -37,9 +37,9 @@ html {
 }
 
 body {
-  font-family: var(--tv-font);
-  background-color: var(--tv-bg);
-  color: var(--tv-text);
+  font-family: var(--acv-font);
+  background-color: var(--acv-bg);
+  color: var(--acv-text);
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
   overflow-x: hidden;
@@ -48,19 +48,19 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--tv-accent);
+  color: var(--acv-accent);
 }
 
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--tv-bg);
+  background: var(--acv-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--tv-border-bright);
+  background: var(--acv-border-bright);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--tv-text-dim);
+  background: var(--acv-text-dim);
 }

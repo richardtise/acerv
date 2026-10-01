@@ -1,4 +1,4 @@
-# TaskVault full stack.
+# Acerv full stack.
 #
 # Usage: docker compose up -d --build
 #
@@ -22,7 +22,7 @@ services:
   # MongoDB — internal only: no host port is published.
   mongodb:
     image: mongo:7
-    container_name: taskvault-mongo
+    container_name: acerv-mongo
     restart: unless-stopped
     volumes:
       - mongo_data:/data/db
@@ -36,14 +36,14 @@ services:
       retries: 5
       start_period: 20s
     networks:
-      - taskvault
+      - acerv
     logging: *default-logging
 
   # Redis — internal only: no host port is published and no password is set.
   # Reserved for a future Bull queue; the backend does not use it yet.
   redis:
     image: redis:7-alpine
-    container_name: taskvault-redis
+    container_name: acerv-redis
     restart: unless-stopped
     volumes:
       - redis_data:/data
@@ -54,7 +54,7 @@ services:
       retries: 5
       start_period: 10s
     networks:
-      - taskvault
+      - acerv
     logging: *default-logging
 
   # Backend API
@@ -62,7 +62,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: taskvault-api
+    container_name: acerv-api
     restart: unless-stopped
     ports:
       - "3001:3001"
@@ -77,7 +77,7 @@ services:
       # (e.g. a MongoDB Atlas URI); otherwise the bundled services are used.
       NODE_ENV: production
       PORT: 3001
-      MONGODB_URI: ${MONGODB_URI:-mongodb://admin:changeme@mongodb:27017/taskvault?authSource=admin}
+      MONGODB_URI: ${MONGODB_URI:-mongodb://admin:changeme@mongodb:27017/acerv?authSource=admin}
       REDIS_URL: ${REDIS_URL:-redis://redis:6379}
       # Comma-separated allowed browser origin for CORS (frontend URL).
       FRONTEND_URL: ${FRONTEND_URL:-http://localhost}
@@ -97,7 +97,7 @@ services:
       retries: 3
       start_period: 20s
     networks:
-      - taskvault
+      - acerv
     logging: *default-logging
 
   # Verifier Bot
@@ -105,7 +105,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile.verifier
-    container_name: taskvault-verifier
+    container_name: acerv-verifier
     restart: unless-stopped
     env_file:
       - path: ./backend/.env
@@ -113,7 +113,7 @@ services:
     environment:
       # Service-internal values override anything in backend/.env.
       NODE_ENV: production
-      MONGODB_URI: ${MONGODB_URI:-mongodb://admin:changeme@mongodb:27017/taskvault?authSource=admin}
+      MONGODB_URI: ${MONGODB_URI:-mongodb://admin:changeme@mongodb:27017/acerv?authSource=admin}
       REDIS_URL: ${REDIS_URL:-redis://redis:6379}
     depends_on:
       mongodb:
@@ -123,7 +123,7 @@ services:
       redis:
         condition: service_started
     networks:
-      - taskvault
+      - acerv
     logging: *default-logging
 
   # Frontend (static bundle served by unprivileged nginx on :8080)
@@ -133,10 +133,10 @@ services:
       dockerfile: Dockerfile
       args:
         # Sourced from the repo-root .env; inlined into the Vite bundle.
-        VITE_VAULT_ADDRESS: ${VITE_VAULT_ADDRESS:-}
+        VITE_ACERV_ADDRESS: ${VITE_ACERV_ADDRESS:-}
         VITE_USDG_ADDRESS: ${VITE_USDG_ADDRESS:-}
         VITE_ROBINHOOD_TESTNET_RPC: ${VITE_ROBINHOOD_TESTNET_RPC:-https://rpc.testnet.chain.robinhood.com}
-    container_name: taskvault-frontend
+    container_name: acerv-frontend
     restart: unless-stopped
     ports:
       # Host 80 -> container 8080 (unprivileged nginx).
@@ -149,7 +149,7 @@ services:
       backend:
         condition: service_started
     networks:
-      - taskvault
+      - acerv
     logging: *default-logging
 
 volumes:
@@ -158,5 +158,5 @@ volumes:
   backend_logs:
 
 networks:
-  taskvault:
+  acerv:
     driver: bridge

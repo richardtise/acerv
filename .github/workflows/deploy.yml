@@ -32,7 +32,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             set -e
-            cd /opt/taskvault
+            cd /opt/acerv
             # .env files are gitignored and untracked on the server, so they
             # survive the hard reset. Never use a bare `git pull`: it can
             # conflict with local files, and `git clean` would delete .env.

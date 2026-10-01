@@ -192,8 +192,8 @@ export default function TaskInterface({ task, onClose, authenticate, isAuthentic
       <div className="task-interface-overlay" style={{ display: 'grid', placeItems: 'center' }}>
         <div style={{ textAlign: 'center' }}>
           <div style={{ fontSize: 64, marginBottom: 16 }}>✅</div>
-          <h2 style={{ color: 'var(--tv-text)' }}>Submitted!</h2>
-          <p style={{ color: 'var(--tv-text-muted)' }}>Your work is being verified.</p>
+          <h2 style={{ color: 'var(--acv-text)' }}>Submitted!</h2>
+          <p style={{ color: 'var(--acv-text-muted)' }}>Your work is being verified.</p>
         </div>
       </div>
     );
@@ -220,10 +220,10 @@ export default function TaskInterface({ task, onClose, authenticate, isAuthentic
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <button onClick={onClose} className="btn-ghost" style={{ fontSize: 18 }}>←</button>
           <div>
-            <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
               Task #{taskId}
             </div>
-            <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--tv-text)' }}>
+            <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--acv-text)' }}>
               {title}
             </div>
           </div>
@@ -254,23 +254,23 @@ export default function TaskInterface({ task, onClose, authenticate, isAuthentic
           </div>
         )}
         <div style={{ marginBottom: 24 }}>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: 8, color: 'var(--tv-text)' }}>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: 8, color: 'var(--acv-text)' }}>
             {title}
           </h1>
           {description && (
-            <p style={{ color: 'var(--tv-text-muted)', fontSize: 15, lineHeight: 1.7 }}>
+            <p style={{ color: 'var(--acv-text-muted)', fontSize: 15, lineHeight: 1.7 }}>
               {description}
             </p>
           )}
           {instructions && (
-            <p style={{ color: 'var(--tv-text-muted)', fontSize: 14, lineHeight: 1.7, marginTop: 8 }}>
-              <strong style={{ color: 'var(--tv-text)' }}>Instructions: </strong>{instructions}
+            <p style={{ color: 'var(--acv-text-muted)', fontSize: 14, lineHeight: 1.7, marginTop: 8 }}>
+              <strong style={{ color: 'var(--acv-text)' }}>Instructions: </strong>{instructions}
             </p>
           )}
         </div>
         {renderWorkspace()}
         {!answerReady.ready && (
-          <p style={{ marginTop: 16, fontSize: 13, color: 'var(--tv-text-muted)' }}>
+          <p style={{ marginTop: 16, fontSize: 13, color: 'var(--acv-text-muted)' }}>
             {answerReady.hint}
           </p>
         )}
@@ -281,8 +281,8 @@ export default function TaskInterface({ task, onClose, authenticate, isAuthentic
 
 function InfoPanel({ heading, children }) {
   return (
-    <div style={{ background: 'var(--tv-bg-panel)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', padding: 20, marginBottom: 24 }}>
-      <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
+    <div style={{ background: 'var(--acv-bg-panel)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', padding: 20, marginBottom: 24 }}>
+      <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
         {heading}
       </h3>
       {children}
@@ -297,7 +297,7 @@ function WritingWorkspace({ task, onAnswer, answer }) {
     <div className="writing-workspace">
       {source && (
         <InfoPanel heading="Source Text">
-          <p style={{ fontSize: 14, lineHeight: 1.7, color: 'var(--tv-text)', whiteSpace: 'pre-wrap' }}>
+          <p style={{ fontSize: 14, lineHeight: 1.7, color: 'var(--acv-text)', whiteSpace: 'pre-wrap' }}>
             {source}
           </p>
         </InfoPanel>
@@ -309,10 +309,10 @@ function WritingWorkspace({ task, onAnswer, answer }) {
           onAnswer({ type: 'writing', text: e.target.value, wordCount: e.target.value.split(/\s+/).filter(w => w).length });
         }}
         placeholder="Start writing your response here..."
-        style={{ fontFamily: 'var(--tv-font)', minHeight: 300 }}
+        style={{ fontFamily: 'var(--acv-font)', minHeight: 300 }}
       />
       <div style={{ marginTop: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <span style={{ fontSize: 12, color: 'var(--tv-text-muted)' }}>
+        <span style={{ fontSize: 12, color: 'var(--acv-text-muted)' }}>
           {text.split(/\s+/).filter(w => w).length} words
         </span>
       </div>
@@ -339,7 +339,7 @@ function LLMWorkspace({ task, onAnswer, answer }) {
   return (
     <div>
       <InfoPanel heading="Prompt">
-        <p style={{ fontSize: 14, lineHeight: 1.7, color: 'var(--tv-text)' }}>
+        <p style={{ fontSize: 14, lineHeight: 1.7, color: 'var(--acv-text)' }}>
           {prompt || task?.instructions || 'No prompt was provided for this task.'}
         </p>
       </InfoPanel>
@@ -353,14 +353,14 @@ function LLMWorkspace({ task, onAnswer, answer }) {
               emit(opt, rationale, confidence);
             }}
             style={{
-              border: choice === opt ? '2px solid var(--tv-accent)' : '1px solid var(--tv-border)',
+              border: choice === opt ? '2px solid var(--acv-accent)' : '1px solid var(--acv-border)',
               cursor: 'pointer'
             }}
           >
-            <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
               Response {opt}
             </div>
-            <p style={{ fontSize: 14, lineHeight: 1.7, color: 'var(--tv-text)' }}>
+            <p style={{ fontSize: 14, lineHeight: 1.7, color: 'var(--acv-text)' }}>
               {responses[opt] || 'Response content is not available for this task.'}
             </p>
           </div>
@@ -368,8 +368,8 @@ function LLMWorkspace({ task, onAnswer, answer }) {
       </div>
       {needsRationale && (
         <div style={{ marginTop: 24 }}>
-          <div style={{ background: 'var(--tv-bg-panel)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', padding: 24 }}>
-            <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
+          <div style={{ background: 'var(--acv-bg-panel)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', padding: 24 }}>
+            <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
               Why does {choice ? `response ${choice}` : 'your pick'} win?
             </h3>
             <textarea
@@ -380,13 +380,13 @@ function LLMWorkspace({ task, onAnswer, answer }) {
               }}
               placeholder="Cite specifics — accuracy, helpfulness, safety… (min 20 characters)"
               style={{
-                width: '100%', minHeight: 100, background: 'transparent', border: '1px solid var(--tv-border)',
-                borderRadius: 'var(--tv-radius)', outline: 'none', fontFamily: 'var(--tv-font)', fontSize: 14,
-                lineHeight: 1.7, color: 'var(--tv-text)', padding: 12, resize: 'vertical',
+                width: '100%', minHeight: 100, background: 'transparent', border: '1px solid var(--acv-border)',
+                borderRadius: 'var(--acv-radius)', outline: 'none', fontFamily: 'var(--acv-font)', fontSize: 14,
+                lineHeight: 1.7, color: 'var(--acv-text)', padding: 12, resize: 'vertical',
               }}
             />
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 16 }}>
-              <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+              <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
                 Confidence
               </span>
               <input
@@ -396,13 +396,13 @@ function LLMWorkspace({ task, onAnswer, answer }) {
                   setConfidence(v);
                   emit(choice, rationale, v);
                 }}
-                style={{ accentColor: 'var(--tv-accent)', flex: 1 }}
+                style={{ accentColor: 'var(--acv-accent)', flex: 1 }}
               />
-              <span style={{ fontFamily: 'var(--tv-font-mono)', fontSize: 13, fontWeight: 700, color: 'var(--tv-accent)', minWidth: 44, textAlign: 'right' }}>
+              <span style={{ fontFamily: 'var(--acv-font-mono)', fontSize: 13, fontWeight: 700, color: 'var(--acv-accent)', minWidth: 44, textAlign: 'right' }}>
                 {confidence}/5
               </span>
             </div>
-            <div style={{ marginTop: 8, fontSize: 12, color: 'var(--tv-text-muted)' }}>
+            <div style={{ marginTop: 8, fontSize: 12, color: 'var(--acv-text-muted)' }}>
               {rationale.trim().length < 20
                 ? `${Math.max(0, 20 - rationale.trim().length)} more characters needed`
                 : `${rationale.trim().length} characters ✓`}
@@ -430,24 +430,24 @@ function RoboticsWorkspace({ task, onAnswer, answer }) {
 
   return (
     <div>
-      <div className="robotics-viewer" style={{ marginBottom: 24, aspectRatio: '16/9', background: 'var(--tv-bg-elevated)', display: 'grid', placeItems: 'center' }}>
+      <div className="robotics-viewer" style={{ marginBottom: 24, aspectRatio: '16/9', background: 'var(--acv-bg-elevated)', display: 'grid', placeItems: 'center' }}>
         {videoUrl ? (
           <video controls src={videoUrl} style={{ width: '100%', height: '100%' }} />
         ) : (
-          <div style={{ textAlign: 'center', color: 'var(--tv-text-muted)' }}>
+          <div style={{ textAlign: 'center', color: 'var(--acv-text-muted)' }}>
             <div style={{ fontSize: 48, marginBottom: 12 }}>🦾</div>
             <p>Robot teleoperation video would load here</p>
           </div>
         )}
       </div>
-      <div style={{ background: 'var(--tv-bg-panel)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', padding: 24 }}>
-        <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 16 }}>
+      <div style={{ background: 'var(--acv-bg-panel)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', padding: 24 }}>
+        <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 16 }}>
           Phase Labels
         </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {phaseNames.map((phase) => (
-            <div key={phase} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 12, background: 'var(--tv-bg)', borderRadius: 'var(--tv-radius)', border: '1px solid var(--tv-border)' }}>
-              <span style={{ fontWeight: 600, color: 'var(--tv-text)' }}>{phase}</span>
+            <div key={phase} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 12, background: 'var(--acv-bg)', borderRadius: 'var(--acv-radius)', border: '1px solid var(--acv-border)' }}>
+              <span style={{ fontWeight: 600, color: 'var(--acv-text)' }}>{phase}</span>
               <button className="btn-ghost" style={{ marginLeft: 'auto', fontSize: 12 }} onClick={() => addPhase(phase)}>
                 Mark Timestamp
               </button>
@@ -455,7 +455,7 @@ function RoboticsWorkspace({ task, onAnswer, answer }) {
           ))}
         </div>
         {phases.length > 0 && (
-          <div style={{ marginTop: 16, fontSize: 12, color: 'var(--tv-text-muted)' }}>
+          <div style={{ marginTop: 16, fontSize: 12, color: 'var(--acv-text-muted)' }}>
             Marked: {phases.map(p => p.name).join(', ')}
           </div>
         )}
@@ -553,8 +553,8 @@ function VisionWorkspace({ task, onAnswer, answer }) {
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           style={{
-            marginBottom: 16, aspectRatio: '16/9', background: 'var(--tv-bg-elevated)',
-            display: 'grid', placeItems: 'center', color: 'var(--tv-text-muted)',
+            marginBottom: 16, aspectRatio: '16/9', background: 'var(--acv-bg-elevated)',
+            display: 'grid', placeItems: 'center', color: 'var(--acv-text-muted)',
             overflow: 'hidden', position: 'relative', touchAction: 'none',
             cursor: draftLabel ? 'crosshair' : 'default',
           }}
@@ -568,18 +568,18 @@ function VisionWorkspace({ task, onAnswer, answer }) {
             </div>
           )}
           {boxes.map((b, i) => (
-            <div key={i} style={{ position: 'absolute', ...boxStyle(b), border: '2px solid var(--tv-accent)', background: 'rgba(244,63,94,0.08)', pointerEvents: 'none' }}>
-              <span style={{ position: 'absolute', top: -20, left: 0, fontSize: 10, fontWeight: 800, background: 'var(--tv-accent)', color: '#fff', padding: '1px 6px', borderRadius: 3, whiteSpace: 'nowrap' }}>
+            <div key={i} style={{ position: 'absolute', ...boxStyle(b), border: '2px solid var(--acv-accent)', background: 'rgba(244,63,94,0.08)', pointerEvents: 'none' }}>
+              <span style={{ position: 'absolute', top: -20, left: 0, fontSize: 10, fontWeight: 800, background: 'var(--acv-accent)', color: '#fff', padding: '1px 6px', borderRadius: 3, whiteSpace: 'nowrap' }}>
                 {b.label}
               </span>
             </div>
           ))}
           {draft && (
-            <div style={{ position: 'absolute', ...boxStyle({ x_min: Math.min(draft.x0, draft.x1), y_min: Math.min(draft.y0, draft.y1), x_max: Math.max(draft.x0, draft.x1), y_max: Math.max(draft.y0, draft.y1) }), border: '2px dashed var(--tv-accent)', background: 'rgba(244,63,94,0.12)', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', ...boxStyle({ x_min: Math.min(draft.x0, draft.x1), y_min: Math.min(draft.y0, draft.y1), x_max: Math.max(draft.x0, draft.x1), y_max: Math.max(draft.y0, draft.y1) }), border: '2px dashed var(--acv-accent)', background: 'rgba(244,63,94,0.12)', pointerEvents: 'none' }} />
           )}
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
-          <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', alignSelf: 'center' }}>
+          <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', alignSelf: 'center' }}>
             1 · Pick label
           </span>
           {targetLabels.map((label) => (
@@ -588,9 +588,9 @@ function VisionWorkspace({ task, onAnswer, answer }) {
               className="btn-secondary"
               style={{
                 fontSize: 13, padding: '6px 12px',
-                background: draftLabel === label ? 'var(--tv-accent)' : undefined,
+                background: draftLabel === label ? 'var(--acv-accent)' : undefined,
                 color: draftLabel === label ? '#fff' : undefined,
-                borderColor: draftLabel === label ? 'var(--tv-accent)' : undefined,
+                borderColor: draftLabel === label ? 'var(--acv-accent)' : undefined,
               }}
               onClick={() => setDraftLabel(label)}
             >
@@ -598,15 +598,15 @@ function VisionWorkspace({ task, onAnswer, answer }) {
             </button>
           ))}
         </div>
-        <p style={{ fontSize: 12, color: 'var(--tv-text-muted)', marginBottom: 16 }}>
+        <p style={{ fontSize: 12, color: 'var(--acv-text-muted)', marginBottom: 16 }}>
           2 · Drag on the image to draw each box. Click × to remove a bad one.
         </p>
         {boxes.length > 0 ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {boxes.map((b, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 12px', background: 'var(--tv-bg-panel)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', fontSize: 12 }}>
-                <span style={{ fontWeight: 700, color: 'var(--tv-text)' }}>{b.label}</span>
-                <span className="mono" style={{ fontFamily: 'var(--tv-font-mono)', color: 'var(--tv-text-muted)' }}>
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 12px', background: 'var(--acv-bg-panel)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', fontSize: 12 }}>
+                <span style={{ fontWeight: 700, color: 'var(--acv-text)' }}>{b.label}</span>
+                <span className="mono" style={{ fontFamily: 'var(--acv-font-mono)', color: 'var(--acv-text-muted)' }}>
                   [{b.x_min.toFixed(2)}, {b.y_min.toFixed(2)}] → [{b.x_max.toFixed(2)}, {b.y_max.toFixed(2)}]
                 </span>
                 <button className="btn-ghost" style={{ marginLeft: 'auto', fontSize: 14, padding: '2px 8px' }} onClick={() => removeBox(i)} aria-label={`Remove ${b.label} box`}>
@@ -616,7 +616,7 @@ function VisionWorkspace({ task, onAnswer, answer }) {
             ))}
           </div>
         ) : (
-          <p style={{ fontSize: 13, color: 'var(--tv-text-muted)' }}>
+          <p style={{ fontSize: 13, color: 'var(--acv-text-muted)' }}>
             {draftLabel ? 'No boxes yet — draw the first one above.' : 'Select a label above to start drawing.'}
           </p>
         )}
@@ -626,7 +626,7 @@ function VisionWorkspace({ task, onAnswer, answer }) {
 
   return (
     <div>
-      <div className="vision-canvas" style={{ marginBottom: 24, aspectRatio: '16/9', background: 'var(--tv-bg-elevated)', display: 'grid', placeItems: 'center', color: 'var(--tv-text-muted)', overflow: 'hidden' }}>
+      <div className="vision-canvas" style={{ marginBottom: 24, aspectRatio: '16/9', background: 'var(--acv-bg-elevated)', display: 'grid', placeItems: 'center', color: 'var(--acv-text-muted)', overflow: 'hidden' }}>
         {imageUrl ? (
           <img src={imageUrl} alt="Inspection" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
         ) : (
@@ -643,7 +643,7 @@ function VisionWorkspace({ task, onAnswer, answer }) {
             className="btn-secondary"
             style={{
               fontSize: 13,
-              background: labels.includes(label) ? 'var(--tv-accent)' : undefined,
+              background: labels.includes(label) ? 'var(--acv-accent)' : undefined,
               color: labels.includes(label) ? '#fff' : undefined
             }}
             onClick={() => toggle(label)}
@@ -699,37 +699,37 @@ function AudioWorkspace({ task, onAnswer, answer }) {
   if (isDiarize) {
     return (
       <div>
-        <div style={{ background: 'var(--tv-bg-panel)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', padding: 32, marginBottom: 24, textAlign: 'center' }}>
+        <div style={{ background: 'var(--acv-bg-panel)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', padding: 32, marginBottom: 24, textAlign: 'center' }}>
           {audioUrl ? (
             <audio controls src={audioUrl} style={{ width: '100%' }} />
           ) : (
             <>
               <div style={{ fontSize: 48, marginBottom: 16 }}>🎧</div>
-              <p style={{ color: 'var(--tv-text-muted)', marginBottom: 16 }}>Meeting clip — add a segment per speaker turn</p>
+              <p style={{ color: 'var(--acv-text-muted)', marginBottom: 16 }}>Meeting clip — add a segment per speaker turn</p>
             </>
           )}
         </div>
-        <div style={{ background: 'var(--tv-bg-panel)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', padding: 20, marginBottom: 16 }}>
-          <h3 style={{ fontSize: 13, fontWeight: 700, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
+        <div style={{ background: 'var(--acv-bg-panel)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', padding: 20, marginBottom: 16 }}>
+          <h3 style={{ fontSize: 13, fontWeight: 700, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
             New segment
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: 10, marginBottom: 10 }}>
             <select
               value={speaker}
               onChange={(e) => setSpeaker(e.target.value)}
-              style={{ padding: '10px 12px', background: 'var(--tv-bg-elevated)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', color: 'var(--tv-text)', fontFamily: 'var(--tv-font)', fontSize: 13 }}
+              style={{ padding: '10px 12px', background: 'var(--acv-bg-elevated)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', color: 'var(--acv-text)', fontFamily: 'var(--acv-font)', fontSize: 13 }}
             >
               {['SPEAKER_1', 'SPEAKER_2', 'SPEAKER_3', 'SPEAKER_4'].map((sp) => (
                 <option key={sp} value={sp}>{sp.replace('_', ' ')}</option>
               ))}
             </select>
             <input type="number" min="0" step="0.1" placeholder="Start (s)" value={segStart} onChange={(e) => setSegStart(e.target.value)}
-              style={{ padding: '10px 12px', background: 'var(--tv-bg-elevated)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', color: 'var(--tv-text)', fontFamily: 'var(--tv-font-mono)', fontSize: 13, outline: 'none' }} />
+              style={{ padding: '10px 12px', background: 'var(--acv-bg-elevated)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', color: 'var(--acv-text)', fontFamily: 'var(--acv-font-mono)', fontSize: 13, outline: 'none' }} />
             <input type="number" min="0" step="0.1" placeholder="End (s)" value={segEnd} onChange={(e) => setSegEnd(e.target.value)}
-              style={{ padding: '10px 12px', background: 'var(--tv-bg-elevated)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', color: 'var(--tv-text)', fontFamily: 'var(--tv-font-mono)', fontSize: 13, outline: 'none' }} />
+              style={{ padding: '10px 12px', background: 'var(--acv-bg-elevated)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', color: 'var(--acv-text)', fontFamily: 'var(--acv-font-mono)', fontSize: 13, outline: 'none' }} />
           </div>
           <input placeholder="What they said (optional)" value={segText} onChange={(e) => setSegText(e.target.value)}
-            style={{ width: '100%', padding: '10px 12px', background: 'var(--tv-bg-elevated)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', color: 'var(--tv-text)', fontFamily: 'var(--tv-font)', fontSize: 13, outline: 'none', marginBottom: 12 }} />
+            style={{ width: '100%', padding: '10px 12px', background: 'var(--acv-bg-elevated)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', color: 'var(--acv-text)', fontFamily: 'var(--acv-font)', fontSize: 13, outline: 'none', marginBottom: 12 }} />
           <button className="btn-primary" style={{ width: '100%' }} onClick={addSegment}
             disabled={parseTs(segStart) === null || parseTs(segEnd) === null || parseTs(segEnd) <= parseTs(segStart)}>
             Add segment
@@ -738,18 +738,18 @@ function AudioWorkspace({ task, onAnswer, answer }) {
         {segments.length > 0 ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {segments.map((seg, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', background: 'var(--tv-bg-panel)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', fontSize: 13 }}>
-                <span style={{ fontWeight: 800, color: 'var(--tv-accent)', fontFamily: 'var(--tv-font-mono)', fontSize: 12 }}>{seg.speaker}</span>
-                <span style={{ fontFamily: 'var(--tv-font-mono)', color: 'var(--tv-text-muted)', fontSize: 12 }}>
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', background: 'var(--acv-bg-panel)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', fontSize: 13 }}>
+                <span style={{ fontWeight: 800, color: 'var(--acv-accent)', fontFamily: 'var(--acv-font-mono)', fontSize: 12 }}>{seg.speaker}</span>
+                <span style={{ fontFamily: 'var(--acv-font-mono)', color: 'var(--acv-text-muted)', fontSize: 12 }}>
                   {Number(seg.start).toFixed(1)}s → {Number(seg.end).toFixed(1)}s
                 </span>
-                <span style={{ color: 'var(--tv-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{seg.text}</span>
+                <span style={{ color: 'var(--acv-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{seg.text}</span>
                 <button className="btn-ghost" style={{ marginLeft: 'auto', fontSize: 14, padding: '2px 8px' }} onClick={() => removeSegment(i)} aria-label="Remove segment">×</button>
               </div>
             ))}
           </div>
         ) : (
-          <p style={{ fontSize: 13, color: 'var(--tv-text-muted)' }}>No segments yet — log each speaker turn above, in order.</p>
+          <p style={{ fontSize: 13, color: 'var(--acv-text-muted)' }}>No segments yet — log each speaker turn above, in order.</p>
         )}
       </div>
     );
@@ -757,13 +757,13 @@ function AudioWorkspace({ task, onAnswer, answer }) {
 
   return (
     <div>
-      <div style={{ background: 'var(--tv-bg-panel)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', padding: 32, marginBottom: 24, textAlign: 'center' }}>
+      <div style={{ background: 'var(--acv-bg-panel)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', padding: 32, marginBottom: 24, textAlign: 'center' }}>
         {audioUrl ? (
           <audio controls src={audioUrl} style={{ width: '100%' }} />
         ) : (
           <>
             <div style={{ fontSize: 48, marginBottom: 16 }}>🎧</div>
-            <p style={{ color: 'var(--tv-text-muted)', marginBottom: 16 }}>Audio waveform visualization</p>
+            <p style={{ color: 'var(--acv-text-muted)', marginBottom: 16 }}>Audio waveform visualization</p>
           </>
         )}
       </div>
@@ -775,7 +775,7 @@ function AudioWorkspace({ task, onAnswer, answer }) {
             onAnswer({ type: 'audio', text: e.target.value });
           }}
           placeholder="Type what you hear..."
-          style={{ fontFamily: 'var(--tv-font)', minHeight: 120 }}
+          style={{ fontFamily: 'var(--acv-font)', minHeight: 120 }}
         />
       </div>
     </div>
@@ -794,7 +794,7 @@ function SafetyWorkspace({ task, onAnswer, answer }) {
       {categories.length > 0 && (
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 16 }}>
           {categories.map((c) => (
-            <span key={c} style={{ fontSize: 12, padding: '4px 10px', border: '1px solid var(--tv-border)', borderRadius: 999, color: 'var(--tv-text-muted)' }}>
+            <span key={c} style={{ fontSize: 12, padding: '4px 10px', border: '1px solid var(--acv-border)', borderRadius: 999, color: 'var(--acv-text-muted)' }}>
               {c}
             </span>
           ))}
@@ -806,8 +806,8 @@ function SafetyWorkspace({ task, onAnswer, answer }) {
             key={l} 
             className="btn-secondary" 
             style={{ 
-              borderColor: l === level ? 'var(--tv-accent)' : undefined,
-              background: l === level ? 'var(--tv-accent)' : undefined,
+              borderColor: l === level ? 'var(--acv-accent)' : undefined,
+              background: l === level ? 'var(--acv-accent)' : undefined,
               color: l === level ? '#fff' : undefined
             }}
             onClick={() => {
@@ -860,11 +860,11 @@ function MedicalWorkspace({ task, onAnswer, answer }) {
 
   return (
     <div>
-      <div className="safety-warning" style={{ background: 'rgba(56,189,248,0.06)', borderColor: 'rgba(56,189,248,0.25)', color: 'var(--tv-accent)' }}>
+      <div className="safety-warning" style={{ background: 'rgba(56,189,248,0.06)', borderColor: 'rgba(56,189,248,0.25)', color: 'var(--acv-accent)' }}>
         <span style={{ fontSize: 20 }}>🏥</span>
         <span>Clinical-assist annotation — your labels train review tools, never diagnose patients.</span>
       </div>
-      <div className="vision-canvas medical-viewer" style={{ marginBottom: 24, aspectRatio: '16/9', background: 'var(--tv-bg-elevated)', display: 'grid', placeItems: 'center', color: 'var(--tv-text-muted)', overflow: 'hidden' }}>
+      <div className="vision-canvas medical-viewer" style={{ marginBottom: 24, aspectRatio: '16/9', background: 'var(--acv-bg-elevated)', display: 'grid', placeItems: 'center', color: 'var(--acv-text-muted)', overflow: 'hidden' }}>
         {imageUrl ? (
           <img src={imageUrl} alt="Clinical scan" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
         ) : (
@@ -874,7 +874,7 @@ function MedicalWorkspace({ task, onAnswer, answer }) {
           </div>
         )}
       </div>
-      <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
+      <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
         Findings (select all observed)
       </h3>
       <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 24 }}>
@@ -884,9 +884,9 @@ function MedicalWorkspace({ task, onAnswer, answer }) {
             className="btn-secondary"
             style={{
               fontSize: 13,
-              background: findings.includes(label) ? 'var(--tv-accent)' : undefined,
+              background: findings.includes(label) ? 'var(--acv-accent)' : undefined,
               color: findings.includes(label) ? '#06121c' : undefined,
-              borderColor: findings.includes(label) ? 'var(--tv-accent)' : undefined,
+              borderColor: findings.includes(label) ? 'var(--acv-accent)' : undefined,
             }}
             onClick={() => toggleFinding(label)}
           >
@@ -894,7 +894,7 @@ function MedicalWorkspace({ task, onAnswer, answer }) {
           </button>
         ))}
       </div>
-      <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
+      <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
         Triage priority
       </h3>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 12, marginBottom: 24 }}>
@@ -903,8 +903,8 @@ function MedicalWorkspace({ task, onAnswer, answer }) {
             key={level}
             className="btn-secondary"
             style={{
-              borderColor: level === triage ? 'var(--tv-accent)' : undefined,
-              background: level === triage ? 'var(--tv-accent)' : undefined,
+              borderColor: level === triage ? 'var(--acv-accent)' : undefined,
+              background: level === triage ? 'var(--acv-accent)' : undefined,
               color: level === triage ? '#06121c' : undefined,
             }}
             onClick={() => pickTriage(level)}
@@ -921,7 +921,7 @@ function MedicalWorkspace({ task, onAnswer, answer }) {
             emit({ findings, triage, note: e.target.value });
           }}
           placeholder="Annotator note (optional) — describe location, size, confidence…"
-          style={{ fontFamily: 'var(--tv-font)', minHeight: 110 }}
+          style={{ fontFamily: 'var(--acv-font)', minHeight: 110 }}
         />
       </div>
     </div>
@@ -972,17 +972,17 @@ function DrivingWorkspace({ task, onAnswer, answer }) {
 function DrivingClip({ videoUrl, clipHint }) {
   return (
     <div>
-      <div className="robotics-viewer driving-viewer" style={{ marginBottom: 12, aspectRatio: '16/9', background: 'var(--tv-bg-elevated)', display: 'grid', placeItems: 'center' }}>
+      <div className="robotics-viewer driving-viewer" style={{ marginBottom: 12, aspectRatio: '16/9', background: 'var(--acv-bg-elevated)', display: 'grid', placeItems: 'center' }}>
         {videoUrl ? (
           <video controls src={videoUrl} style={{ width: '100%', height: '100%' }} />
         ) : (
-          <div style={{ textAlign: 'center', color: 'var(--tv-text-muted)' }}>
+          <div style={{ textAlign: 'center', color: 'var(--acv-text-muted)' }}>
             <div style={{ fontSize: 48, marginBottom: 12 }}>🛺</div>
             <p>Street clip would load here (anonymised, no GPS overlay)</p>
           </div>
         )}
       </div>
-      <p style={{ fontSize: 12, color: 'var(--tv-text-muted)', marginBottom: 24 }}>{clipHint}</p>
+      <p style={{ fontSize: 12, color: 'var(--acv-text-muted)', marginBottom: 24 }}>{clipHint}</p>
     </div>
   );
 }
@@ -1016,23 +1016,23 @@ function HazardEvent({ onAnswer, answer, videoUrl, clipHint, hazardTypes }) {
   return (
     <div>
       <DrivingClip videoUrl={videoUrl} clipHint={clipHint} />
-      <div style={{ background: 'var(--tv-bg-panel)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', padding: 20, marginBottom: 16 }}>
-        <h3 style={{ fontSize: 13, fontWeight: 700, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
+      <div style={{ background: 'var(--acv-bg-panel)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', padding: 20, marginBottom: 16 }}>
+        <h3 style={{ fontSize: 13, fontWeight: 700, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
           Tag hazard event
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 120px', gap: 10, marginBottom: 10 }}>
           <select
             value={type}
             onChange={(e) => setType(e.target.value)}
-            style={{ padding: '10px 12px', background: 'var(--tv-bg-elevated)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', color: 'var(--tv-text)', fontFamily: 'var(--tv-font)', fontSize: 13 }}
+            style={{ padding: '10px 12px', background: 'var(--acv-bg-elevated)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', color: 'var(--acv-text)', fontFamily: 'var(--acv-font)', fontSize: 13 }}
           >
             {hazardTypes.map((h) => <option key={h} value={h}>{h}</option>)}
           </select>
           <input type="number" min="0" step="0.1" placeholder="Time (s)" value={t} onChange={(e) => setT(e.target.value)}
-            style={{ padding: '10px 12px', background: 'var(--tv-bg-elevated)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', color: 'var(--tv-text)', fontFamily: 'var(--tv-font-mono)', fontSize: 13, outline: 'none' }} />
+            style={{ padding: '10px 12px', background: 'var(--acv-bg-elevated)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', color: 'var(--acv-text)', fontFamily: 'var(--acv-font-mono)', fontSize: 13, outline: 'none' }} />
         </div>
         <input placeholder="Note (optional) — e.g. goat from left at junction" value={note} onChange={(e) => setNote(e.target.value)}
-          style={{ width: '100%', padding: '10px 12px', background: 'var(--tv-bg-elevated)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', color: 'var(--tv-text)', fontFamily: 'var(--tv-font)', fontSize: 13, outline: 'none', marginBottom: 12 }} />
+          style={{ width: '100%', padding: '10px 12px', background: 'var(--acv-bg-elevated)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', color: 'var(--acv-text)', fontFamily: 'var(--acv-font)', fontSize: 13, outline: 'none', marginBottom: 12 }} />
         <button className="btn-primary" style={{ width: '100%' }} onClick={addEvent}
           disabled={!type || t === '' || !(Number(t) >= 0)}>
           Tag event at {t === '' ? '—' : `${Number(t).toFixed(1)}s`}
@@ -1041,16 +1041,16 @@ function HazardEvent({ onAnswer, answer, videoUrl, clipHint, hazardTypes }) {
       {events.length > 0 ? (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {events.map((e, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', background: 'var(--tv-bg-panel)', border: '1px solid var(--tv-border)', borderRadius: 'var(--tv-radius)', fontSize: 13 }}>
-              <span style={{ fontFamily: 'var(--tv-font-mono)', color: 'var(--tv-accent)', fontSize: 12, fontWeight: 800 }}>{Number(e.t).toFixed(1)}s</span>
-              <span style={{ fontWeight: 700, color: 'var(--tv-text)' }}>{e.type}</span>
-              <span style={{ color: 'var(--tv-text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.note}</span>
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', background: 'var(--acv-bg-panel)', border: '1px solid var(--acv-border)', borderRadius: 'var(--acv-radius)', fontSize: 13 }}>
+              <span style={{ fontFamily: 'var(--acv-font-mono)', color: 'var(--acv-accent)', fontSize: 12, fontWeight: 800 }}>{Number(e.t).toFixed(1)}s</span>
+              <span style={{ fontWeight: 700, color: 'var(--acv-text)' }}>{e.type}</span>
+              <span style={{ color: 'var(--acv-text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.note}</span>
               <button className="btn-ghost" style={{ marginLeft: 'auto', fontSize: 14, padding: '2px 8px' }} onClick={() => removeEvent(i)} aria-label="Remove event">×</button>
             </div>
           ))}
         </div>
       ) : (
-        <p style={{ fontSize: 13, color: 'var(--tv-text-muted)' }}>No events tagged yet. Mark every long-tail hazard you spot.</p>
+        <p style={{ fontSize: 13, color: 'var(--acv-text-muted)' }}>No events tagged yet. Mark every long-tail hazard you spot.</p>
       )}
     </div>
   );
@@ -1074,7 +1074,7 @@ function BehaviorNarrate({ task, onAnswer, answer, videoUrl, clipHint }) {
   return (
     <div>
       <DrivingClip videoUrl={videoUrl} clipHint={clipHint} />
-      <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
+      <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
         What did the ego driver do?
       </h3>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 20 }}>
@@ -1084,9 +1084,9 @@ function BehaviorNarrate({ task, onAnswer, answer, videoUrl, clipHint }) {
             className="btn-secondary"
             style={{
               fontSize: 13,
-              background: maneuvers.includes(m) ? 'var(--tv-accent)' : undefined,
+              background: maneuvers.includes(m) ? 'var(--acv-accent)' : undefined,
               color: maneuvers.includes(m) ? '#1a1500' : undefined,
-              borderColor: maneuvers.includes(m) ? 'var(--tv-accent)' : undefined,
+              borderColor: maneuvers.includes(m) ? 'var(--acv-accent)' : undefined,
             }}
             onClick={() => toggle(m)}
           >
@@ -1102,10 +1102,10 @@ function BehaviorNarrate({ task, onAnswer, answer, videoUrl, clipHint }) {
             emit(maneuvers, e.target.value);
           }}
           placeholder="Narrate in 1–2 sentences: what did the driver do and WHY? (min 30 characters)"
-          style={{ fontFamily: 'var(--tv-font)', minHeight: 110 }}
+          style={{ fontFamily: 'var(--acv-font)', minHeight: 110 }}
         />
       </div>
-      <div style={{ marginTop: 8, fontSize: 12, color: 'var(--tv-text-muted)' }}>
+      <div style={{ marginTop: 8, fontSize: 12, color: 'var(--acv-text-muted)' }}>
         {narration.trim().length < 30
           ? `${Math.max(0, 30 - narration.trim().length)} more characters needed`
           : `${narration.trim().length} characters ✓`}
@@ -1143,15 +1143,15 @@ function SceneAttribute({ task, onAnswer, answer, videoUrl, clipHint }) {
   return (
     <div>
       <DrivingClip videoUrl={videoUrl} clipHint={clipHint} />
-      <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 4 }}>
+      <h3 style={{ fontSize: 14, fontWeight: 700, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 4 }}>
         Scene attributes
       </h3>
-      <p style={{ fontSize: 12, color: 'var(--tv-text-muted)', marginBottom: 20 }}>
+      <p style={{ fontSize: 12, color: 'var(--acv-text-muted)', marginBottom: 20 }}>
         {selectedCount}/{fields.length} fields set — road surface, markings, density and lighting are required.
       </p>
       {fields.map((field) => (
         <div key={field.key} style={{ marginBottom: 18 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--tv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--acv-text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>
             {field.label}{field.multi ? ' (multi)' : ' *'}
           </div>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
@@ -1164,9 +1164,9 @@ function SceneAttribute({ task, onAnswer, answer, videoUrl, clipHint }) {
                   className="btn-secondary"
                   style={{
                     fontSize: 13, padding: '6px 12px',
-                    background: active ? 'var(--tv-accent)' : undefined,
+                    background: active ? 'var(--acv-accent)' : undefined,
                     color: active ? '#1a1500' : undefined,
-                    borderColor: active ? 'var(--tv-accent)' : undefined,
+                    borderColor: active ? 'var(--acv-accent)' : undefined,
                   }}
                   onClick={() => pick(field, opt)}
                 >
@@ -1185,7 +1185,7 @@ function SceneAttribute({ task, onAnswer, answer, videoUrl, clipHint }) {
             emit(attributes, e.target.value);
           }}
           placeholder="Frame note (optional) — e.g. junction at 0:12 has no markings at all"
-          style={{ fontFamily: 'var(--tv-font)', minHeight: 80 }}
+          style={{ fontFamily: 'var(--acv-font)', minHeight: 80 }}
         />
       </div>
     </div>
@@ -1203,7 +1203,7 @@ function GenericWorkspace({ task, onAnswer, answer }) {
           onAnswer({ type: 'generic', text: e.target.value });
         }}
         placeholder="Enter your response..."
-        style={{ fontFamily: 'var(--tv-font)', minHeight: 200 }}
+        style={{ fontFamily: 'var(--acv-font)', minHeight: 200 }}
       />
     </div>
   );

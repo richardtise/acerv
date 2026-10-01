@@ -41,7 +41,7 @@ describe('modality encoding', () => {
   });
 
   test('modality list matches the contract constructor registry', () => {
-    // contracts/src/TaskVault.sol registers keccak256 of exactly these names.
+    // contracts/src/AcervVault.sol registers keccak256 of exactly these names.
     expect(MODALITY_NAMES).toEqual([
       'robotics',
       'llm',

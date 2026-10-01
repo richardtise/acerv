@@ -2,11 +2,11 @@
 pragma solidity ^0.8.20;
 
 import "forge-std/Script.sol";
-import "../src/TaskVaultPoints.sol";
-import "../src/TaskVault.sol";
+import "../src/AcervPoints.sol";
+import "../src/AcervVault.sol";
 import "../src/mocks/MockUSDG.sol";
 
-/// @notice Deploys TaskVaultPoints + TaskVault and wires up the minter/burner roles.
+/// @notice Deploys AcervPoints + AcervVault and wires up the minter/burner roles.
 /// @dev Env:
 ///        PRIVATE_KEY       (required) deployer key
 ///        TREASURY_ADDRESS  (required) protocol treasury address (no longer receives stream funds)
@@ -35,12 +35,12 @@ contract Deploy is Script {
         }
 
         // 1. Deploy points token
-        TaskVaultPoints points = new TaskVaultPoints(deployer);
-        console.log("TaskVaultPoints deployed at:", address(points));
+        AcervPoints points = new AcervPoints(deployer);
+        console.log("AcervPoints deployed at:", address(points));
 
         // 2. Deploy main vault
-        TaskVault vault = new TaskVault(address(points), usdg, treasury, deployer);
-        console.log("TaskVault deployed at:", address(vault));
+        AcervVault vault = new AcervVault(address(points), usdg, treasury, deployer);
+        console.log("AcervVault deployed at:", address(vault));
 
         // 3. Grant vault minter/burner roles
         points.grantRole(points.MINTER_ROLE(), address(vault));
@@ -51,7 +51,7 @@ contract Deploy is Script {
         console.log("=== Deployment Summary ===");
         console.log("Network:", block.chainid == 46630 ? "Robinhood Testnet" : "Other/Mainnet");
         console.log("Points Token:", address(points));
-        console.log("TaskVault:", address(vault));
+        console.log("AcervVault:", address(vault));
         console.log("USDG:", usdg);
         console.log("Treasury:", treasury);
         console.log("Admin:", deployer);

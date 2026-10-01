@@ -16,10 +16,10 @@ COPY --chown=node:node . .
 # repo-root .env (see docker-compose.yml); frontend/.env is gitignored and is
 # excluded from the build context by frontend/.dockerignore, so it is never
 # baked into the image.
-ARG VITE_VAULT_ADDRESS=""
+ARG VITE_ACERV_ADDRESS=""
 ARG VITE_USDG_ADDRESS=""
 ARG VITE_ROBINHOOD_TESTNET_RPC="https://rpc.testnet.chain.robinhood.com"
-ENV VITE_VAULT_ADDRESS=${VITE_VAULT_ADDRESS} \
+ENV VITE_ACERV_ADDRESS=${VITE_ACERV_ADDRESS} \
     VITE_USDG_ADDRESS=${VITE_USDG_ADDRESS} \
     VITE_ROBINHOOD_TESTNET_RPC=${VITE_ROBINHOOD_TESTNET_RPC}
 

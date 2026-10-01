@@ -305,7 +305,7 @@ const sampleTasks = [
 ];
 
 async function seed() {
-  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/taskvault');
+  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/acerv');
   logger.info('Connected to MongoDB for seeding');
 
   await Task.deleteMany({});

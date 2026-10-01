@@ -1,7 +1,7 @@
 {
-  "name": "taskavault-backend",
+  "name": "acerv-backend",
   "version": "1.0.0",
-  "description": "TaskVault API — task management, verification, and off-chain data",
+  "description": "Acerv API — task management, verification, and off-chain data",
   "main": "src/index.js",
   "engines": {
     "node": ">=20"

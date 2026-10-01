@@ -62,7 +62,7 @@ function validateBaseEnv() {
 /** Validate the variables needed specifically for on-chain writes. */
 function validateChainEnv() {
   const missing = [];
-  for (const name of ['RPC_URL', 'VAULT_ADDRESS', 'PRIVATE_KEY']) {
+  for (const name of ['RPC_URL', 'ACERV_ADDRESS', 'PRIVATE_KEY']) {
     if (!isSet(process.env[name])) missing.push(name);
   }
   if (missing.length > 0) {

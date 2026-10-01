@@ -10,12 +10,12 @@
  *   - CATEGORY  : the kind of work (hyphenated). Drives verification rules,
  *                 time limits and UI routing. Stored on Task.category.
  *   - MODALITY  : the badge bucket (short name). MUST match the names the
- *                 TaskVault constructor registers on-chain via
+ *                 AcervVault constructor registers on-chain via
  *                 keccak256(name). Stored on Task.modality as the plain name
  *                 and hashed only at the chain boundary (services/blockchain).
  *
  * Add a category here, then map it to a modality below. Add a NEW modality only
- * if it is also registered on-chain (contracts/src/TaskVault.sol constructor or
+ * if it is also registered on-chain (contracts/src/AcervVault.sol constructor or
  * `registerModality`).
  */
 

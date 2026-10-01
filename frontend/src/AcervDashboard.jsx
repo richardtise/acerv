@@ -32,7 +32,7 @@ const GENRE_VISUALS = {
   safety: { icon: '🛡️', color: '#ef4444' },
   medical: { icon: '🩻', color: '#38bdf8' },
   driving: { icon: '🛺', color: '#facc15' },
-  default: { icon: '📋', color: 'var(--tv-accent)' },
+  default: { icon: '📋', color: 'var(--acv-accent)' },
 }
 
 const STREAM_PERIODS = [
@@ -53,7 +53,7 @@ function SkeletonCard() {
   )
 }
 
-export default function TaskVaultDashboard() {
+export default function AcervDashboard() {
   const { address, isConnected } = useAccount()
   const chainId = useChainId()
   const { switchChain } = useSwitchChain()
@@ -141,8 +141,8 @@ export default function TaskVaultDashboard() {
       <div className="dashboard-container">
         <nav className="dashboard-nav">
           <div className="nav-brand">
-            <div className="logo-box">TV</div>
-            <span>TaskVault</span>
+            <img className="logo-mark" src="/acerv-mark.svg" alt="Acerv" width="32" height="32" />
+            <span>Acerv</span>
           </div>
           <ConnectButton />
         </nav>
@@ -165,8 +165,8 @@ export default function TaskVaultDashboard() {
       <div className="dashboard-container">
         <nav className="dashboard-nav">
           <div className="nav-brand">
-            <div className="logo-box">TV</div>
-            <span>TaskVault</span>
+            <img className="logo-mark" src="/acerv-mark.svg" alt="Acerv" width="32" height="32" />
+            <span>Acerv</span>
           </div>
           <ConnectButton />
         </nav>
@@ -184,8 +184,8 @@ export default function TaskVaultDashboard() {
     <div className="dashboard-container">
       <nav className="dashboard-nav">
         <div className="nav-brand">
-          <div className="logo-box">TV</div>
-          <span>TaskVault</span>
+          <img className="logo-mark" src="/acerv-mark.svg" alt="Acerv" width="32" height="32" />
+          <span>Acerv</span>
         </div>
         <div className="nav-links">
           <button className={activeTab === 'tasks' ? 'active' : ''} onClick={() => setActiveTab('tasks')}>
@@ -208,7 +208,7 @@ export default function TaskVaultDashboard() {
 
       {isWrongChain && (
         <div className="chain-banner">
-          <span>Wrong network. Switch to {robinhoodTestnet.name} to use TaskVault.</span>
+          <span>Wrong network. Switch to {robinhoodTestnet.name} to use Acerv.</span>
           <button className="btn-primary" onClick={() => switchChain({ chainId: targetChainId })}>
             Switch Network
           </button>
@@ -270,7 +270,7 @@ export default function TaskVaultDashboard() {
 
             {!isRegistered && (
               <div className="register-cta">
-                <h2>Welcome to TaskVault</h2>
+                <h2>Welcome to Acerv</h2>
                 <p>Register free to start earning points. No deposits required.</p>
 
                 {registerError && (
@@ -289,7 +289,7 @@ export default function TaskVaultDashboard() {
 
                 <div className="balance-hint">
                   USDG Balance: <strong>{formatUSDG(usdcBalance)}</strong> 
-                  <span style={{ marginLeft: 8, color: 'var(--tv-text-dim)' }}>
+                  <span style={{ marginLeft: 8, color: 'var(--acv-text-dim)' }}>
                     (Optional: deposit in Vault for bonuses)
                   </span>
                 </div>
@@ -470,7 +470,7 @@ export default function TaskVaultDashboard() {
                       {tier.tasks === 'Invite' ? 'Invite Only' : `${tier.tasks} tasks + ${tier.accuracy}% accuracy`}
                     </div>
                     {isCurrent && (
-                      <div style={{ marginTop: 12, fontSize: 12, color: 'var(--tv-accent)', fontWeight: 700 }}>
+                      <div style={{ marginTop: 12, fontSize: 12, color: 'var(--acv-accent)', fontWeight: 700 }}>
                         ← Current Tier
                       </div>
                     )}
@@ -528,11 +528,11 @@ export default function TaskVaultDashboard() {
                   style={{
                     width: '100%',
                     padding: '10px 14px',
-                    background: 'var(--tv-bg-elevated)',
-                    border: '1px solid var(--tv-border)',
-                    borderRadius: 'var(--tv-radius)',
-                    color: 'var(--tv-text)',
-                    fontFamily: 'var(--tv-font)',
+                    background: 'var(--acv-bg-elevated)',
+                    border: '1px solid var(--acv-border)',
+                    borderRadius: 'var(--acv-radius)',
+                    color: 'var(--acv-text)',
+                    fontFamily: 'var(--acv-font)',
                     fontSize: 14,
                     marginTop: 12,
                     marginBottom: 12,
@@ -553,7 +553,7 @@ export default function TaskVaultDashboard() {
                     : 'Deposit USDG'}
                 </button>
                 {isWrongChain && (
-                  <p style={{ marginTop: 8, fontSize: 12, color: 'var(--tv-warning)' }}>
+                  <p style={{ marginTop: 8, fontSize: 12, color: 'var(--acv-warning)' }}>
                     Switch to {robinhoodTestnet.name} to deposit.
                   </p>
                 )}
@@ -570,11 +570,11 @@ export default function TaskVaultDashboard() {
                   style={{
                     width: '100%',
                     padding: '10px 14px',
-                    background: 'var(--tv-bg-elevated)',
-                    border: '1px solid var(--tv-border)',
-                    borderRadius: 'var(--tv-radius)',
-                    color: 'var(--tv-text)',
-                    fontFamily: 'var(--tv-font)',
+                    background: 'var(--acv-bg-elevated)',
+                    border: '1px solid var(--acv-border)',
+                    borderRadius: 'var(--acv-radius)',
+                    color: 'var(--acv-text)',
+                    fontFamily: 'var(--acv-font)',
                     fontSize: 14,
                     marginTop: 12,
                     marginBottom: 12,
@@ -593,7 +593,7 @@ export default function TaskVaultDashboard() {
                   {isWithdrawing ? 'Withdrawing...' : 'Withdraw USDG'}
                 </button>
                 {isWrongChain && (
-                  <p style={{ marginTop: 8, fontSize: 12, color: 'var(--tv-warning)' }}>
+                  <p style={{ marginTop: 8, fontSize: 12, color: 'var(--acv-warning)' }}>
                     Switch to {robinhoodTestnet.name} to withdraw.
                   </p>
                 )}
@@ -615,17 +615,17 @@ export default function TaskVaultDashboard() {
                     onClick={() => setStreamPeriod(idx)}
                     style={{
                       padding: 16,
-                      background: streamPeriod === idx ? 'var(--tv-bg-elevated)' : 'var(--tv-bg)',
-                      border: `1.5px solid ${streamPeriod === idx ? 'var(--tv-accent)' : 'var(--tv-border)'}`,
-                      borderRadius: 'var(--tv-radius)',
+                      background: streamPeriod === idx ? 'var(--acv-bg-elevated)' : 'var(--acv-bg)',
+                      border: `1.5px solid ${streamPeriod === idx ? 'var(--acv-accent)' : 'var(--acv-border)'}`,
+                      borderRadius: 'var(--acv-radius)',
                       cursor: 'pointer',
                       textAlign: 'center',
                     }}
                   >
-                    <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--tv-text)', marginBottom: 4 }}>
+                    <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--acv-text)', marginBottom: 4 }}>
                       {period.label}
                     </div>
-                    <div style={{ fontSize: 11, color: 'var(--tv-text-muted)', marginTop: 4 }}>
+                    <div style={{ fontSize: 11, color: 'var(--acv-text-muted)', marginTop: 4 }}>
                       {period.lockNote} · 0% yield
                     </div>
                   </div>
@@ -640,11 +640,11 @@ export default function TaskVaultDashboard() {
                 style={{
                   width: '100%',
                   padding: '10px 14px',
-                  background: 'var(--tv-bg-elevated)',
-                  border: '1px solid var(--tv-border)',
-                  borderRadius: 'var(--tv-radius)',
-                  color: 'var(--tv-text)',
-                  fontFamily: 'var(--tv-font)',
+                  background: 'var(--acv-bg-elevated)',
+                  border: '1px solid var(--acv-border)',
+                  borderRadius: 'var(--acv-radius)',
+                  color: 'var(--acv-text)',
+                  fontFamily: 'var(--acv-font)',
                   fontSize: 14,
                   marginBottom: 12,
                   outline: 'none',
@@ -662,7 +662,7 @@ export default function TaskVaultDashboard() {
                 {isStreaming ? 'Creating Stream...' : `Create ${STREAM_PERIODS[streamPeriod]?.label} Stream`}
               </button>
               {isWrongChain && (
-                <p style={{ marginTop: 8, fontSize: 12, color: 'var(--tv-warning)' }}>
+                <p style={{ marginTop: 8, fontSize: 12, color: 'var(--acv-warning)' }}>
                   Switch to {robinhoodTestnet.name} to create a stream.
                 </p>
               )}
