@@ -50,11 +50,39 @@ export const robinhoodTestnet = {
   testnet: true,
 }
 
+// Local Anvil chain for dev/testing. Enabled with VITE_USE_ANVIL=true.
+// VITE_ANVIL_RPC lets remote testers (e.g. friends over Tailscale) point at
+// the host's Anvil instance instead of their own localhost.
+export const anvilLocal = {
+  id: 31337,
+  name: 'Anvil Local',
+  nativeCurrency: {
+    name: 'Ether',
+    symbol: 'ETH',
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: [import.meta.env.VITE_ANVIL_RPC || 'http://127.0.0.1:8545']
+    },
+    public: {
+      http: [import.meta.env.VITE_ANVIL_RPC || 'http://127.0.0.1:8545']
+    },
+  },
+  testnet: true,
+}
+
+// The chain the app targets. Defaults to Robinhood testnet; flips to Anvil
+// for local dev. Components read this — never robinhoodTestnet directly.
+export const activeChain =
+  import.meta.env.VITE_USE_ANVIL === 'true' ? anvilLocal : robinhoodTestnet
+
 export const config = createConfig({
-  chains: [robinhoodTestnet, robinhoodChain],
+  chains: activeChain === anvilLocal ? [anvilLocal] : [robinhoodTestnet, robinhoodChain],
   connectors: [injected()],
   transports: {
     [robinhoodChain.id]: http(),
     [robinhoodTestnet.id]: http(),
+    [anvilLocal.id]: http(),
   },
 })

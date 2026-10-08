@@ -3,7 +3,7 @@ import { useChainId } from 'wagmi';
 import { useTheme } from './ThemeProvider';
 import { resolveGenre } from '../themes';
 import { useTaskMetrics, fetchTaskDetail, AUTH_TOKEN_KEY } from '../hooks';
-import { robinhoodTestnet } from '../wagmi-config';
+import { activeChain } from '../wagmi-config';
 
 // Only render media we can actually load; ipfs:// (and missing) values fall
 // back to the existing placeholders instead of rendering a broken element.
@@ -20,7 +20,7 @@ function assetUrl(task, type) {
 export default function TaskInterface({ task, onClose, authenticate, isAuthenticated }) {
   const { setTheme, resetTheme } = useTheme();
   const chainId = useChainId();
-  const isWrongChain = chainId !== robinhoodTestnet.id;
+  const isWrongChain = chainId !== activeChain.id;
   const { startTracking, stopTracking, getMetrics } = useTaskMetrics();
 
   // `task` comes from the list endpoint, which strips `taskData`; enrich it from
@@ -240,7 +240,7 @@ export default function TaskInterface({ task, onClose, authenticate, isAuthentic
       <div className="task-interface-content">
         {isWrongChain && (
           <div className="chain-banner" style={{ marginBottom: 16 }}>
-            <span>Wrong network. Switch to {robinhoodTestnet.name} to submit work.</span>
+            <span>Wrong network. Switch to {activeChain.name} to submit work.</span>
           </div>
         )}
         {error && (

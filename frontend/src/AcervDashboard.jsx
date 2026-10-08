@@ -10,7 +10,7 @@ import {
   formatModality, badgeLevelName, badgeLevelColor
 } from './hooks'
 import TaskInterface from './components/TaskInterface'
-import { robinhoodTestnet } from './wagmi-config'
+import { activeChain } from './wagmi-config'
 import { CONFIG_ERROR, isConfigured } from './config'
 import { resolveGenre } from './themes'
 
@@ -79,7 +79,7 @@ export default function AcervDashboard() {
   const [streamAmount, setStreamAmount] = useState('')
   const [streamPeriod, setStreamPeriod] = useState(0)
 
-  const targetChainId = robinhoodTestnet.id
+  const targetChainId = activeChain.id
 
   useEffect(() => {
     const ref = captureReferrer()
@@ -208,7 +208,7 @@ export default function AcervDashboard() {
 
       {isWrongChain && (
         <div className="chain-banner">
-          <span>Wrong network. Switch to {robinhoodTestnet.name} to use Acerv.</span>
+          <span>Wrong network. Switch to {activeChain.name} to use Acerv.</span>
           <button className="btn-primary" onClick={() => switchChain({ chainId: targetChainId })}>
             Switch Network
           </button>
@@ -554,7 +554,7 @@ export default function AcervDashboard() {
                 </button>
                 {isWrongChain && (
                   <p style={{ marginTop: 8, fontSize: 12, color: 'var(--acv-warning)' }}>
-                    Switch to {robinhoodTestnet.name} to deposit.
+                    Switch to {activeChain.name} to deposit.
                   </p>
                 )}
               </div>
@@ -594,7 +594,7 @@ export default function AcervDashboard() {
                 </button>
                 {isWrongChain && (
                   <p style={{ marginTop: 8, fontSize: 12, color: 'var(--acv-warning)' }}>
-                    Switch to {robinhoodTestnet.name} to withdraw.
+                    Switch to {activeChain.name} to withdraw.
                   </p>
                 )}
               </div>
@@ -663,7 +663,7 @@ export default function AcervDashboard() {
               </button>
               {isWrongChain && (
                 <p style={{ marginTop: 8, fontSize: 12, color: 'var(--acv-warning)' }}>
-                  Switch to {robinhoodTestnet.name} to create a stream.
+                  Switch to {activeChain.name} to create a stream.
                 </p>
               )}
             </div>

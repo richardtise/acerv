@@ -4,6 +4,10 @@ node_modules/
 # Local npm cache (used when the global cache is not writable)
 .npm-cache/
 
+# Local dev artifacts (Anvil/Mongo binaries + data — never commit)
+.mongo-bin/
+.anvil.log
+
 # Environment files — templates (.env.example) stay tracked.
 .env
 .env.*
